@@ -1,0 +1,11 @@
+/output/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out

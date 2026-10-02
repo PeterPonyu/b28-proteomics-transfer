@@ -1,0 +1,258 @@
+{
+  "status": "candidate, original split-half calibration procedure rerun on corrected objects; manuscript HOLD",
+  "caveat": "inner 2/3-cohort fit differs from 5-cohort outer model, so not a universal recalibration mechanism test",
+  "folds": [
+    {
+      "held_out": "Ccrcc",
+      "n_calibration": 997,
+      "n_training_cohorts_inner": [
+        2,
+        3
+      ],
+      "n_training_cohorts_outer": 5,
+      "fitted_temperature": 2.029607861778183,
+      "metrics": {
+        "before": {
+          "n": 194,
+          "n_tumor": 110,
+          "n_normal": 84,
+          "auroc": 0.8484848484848485,
+          "ece_10": 0.2521958526070278,
+          "brier": 0.22453922823191977,
+          "log_loss": 0.8162476359421095,
+          "accuracy": 0.6958762886597938
+        },
+        "temperature": {
+          "n": 194,
+          "n_tumor": 110,
+          "n_normal": 84,
+          "auroc": 0.8484848484848485,
+          "ece_10": 0.18439891732245017,
+          "brier": 0.19674082322182052,
+          "log_loss": 0.593220514205952,
+          "accuracy": 0.6958762886597938
+        },
+        "platt": {
+          "n": 194,
+          "n_tumor": 110,
+          "n_normal": 84,
+          "auroc": 0.8484848484848485,
+          "ece_10": 0.13034998158104727,
+          "brier": 0.16401671418703845,
+          "log_loss": 0.5182054018096957,
+          "accuracy": 0.7731958762886598
+        }
+      }
+    },
+    {
+      "held_out": "Luad",
+      "n_calibration": 978,
+      "n_training_cohorts_inner": [
+        2,
+        3
+      ],
+      "n_training_cohorts_outer": 5,
+      "fitted_temperature": 1.6507822319435033,
+      "metrics": {
+        "before": {
+          "n": 213,
+          "n_tumor": 111,
+          "n_normal": 102,
+          "auroc": 0.9998233527645293,
+          "ece_10": 0.02032156072777235,
+          "brier": 0.006372412062696299,
+          "log_loss": 0.02534470215230341,
+          "accuracy": 0.9859154929577465
+        },
+        "temperature": {
+          "n": 213,
+          "n_tumor": 111,
+          "n_normal": 102,
+          "auroc": 0.9998233527645293,
+          "ece_10": 0.04629004057999957,
+          "brier": 0.009311723033094651,
+          "log_loss": 0.05281684880633355,
+          "accuracy": 0.9859154929577465
+        },
+        "platt": {
+          "n": 213,
+          "n_tumor": 111,
+          "n_normal": 102,
+          "auroc": 0.9998233527645293,
+          "ece_10": 0.027186538842809704,
+          "brier": 0.011093311411689646,
+          "log_loss": 0.04066430717581864,
+          "accuracy": 0.9859154929577465
+        }
+      }
+    },
+    {
+      "held_out": "Ucec",
+      "n_calibration": 1039,
+      "n_training_cohorts_inner": [
+        2,
+        3
+      ],
+      "n_training_cohorts_outer": 5,
+      "fitted_temperature": 1.55061893677542,
+      "metrics": {
+        "before": {
+          "n": 152,
+          "n_tumor": 103,
+          "n_normal": 49,
+          "auroc": 0.9183673469387755,
+          "ece_10": 0.15007447740553242,
+          "brier": 0.13762827674765124,
+          "log_loss": 0.5270142156676859,
+          "accuracy": 0.8421052631578947
+        },
+        "temperature": {
+          "n": 152,
+          "n_tumor": 103,
+          "n_normal": 49,
+          "auroc": 0.9183673469387755,
+          "ece_10": 0.14005305750530073,
+          "brier": 0.1291608559119899,
+          "log_loss": 0.419579124043265,
+          "accuracy": 0.8421052631578947
+        },
+        "platt": {
+          "n": 152,
+          "n_tumor": 103,
+          "n_normal": 49,
+          "auroc": 0.9183673469387755,
+          "ece_10": 0.09173142533123929,
+          "brier": 0.11195323279072969,
+          "log_loss": 0.3628620848713117,
+          "accuracy": 0.8618421052631579
+        }
+      }
+    },
+    {
+      "held_out": "Hnscc",
+      "n_calibration": 1009,
+      "n_training_cohorts_inner": [
+        2,
+        3
+      ],
+      "n_training_cohorts_outer": 5,
+      "fitted_temperature": 1.6186897313043536,
+      "metrics": {
+        "before": {
+          "n": 182,
+          "n_tumor": 110,
+          "n_normal": 72,
+          "auroc": 0.9809343434343435,
+          "ece_10": 0.03680880335965552,
+          "brier": 0.04381883106887914,
+          "log_loss": 0.1656151085393093,
+          "accuracy": 0.945054945054945
+        },
+        "temperature": {
+          "n": 182,
+          "n_tumor": 110,
+          "n_normal": 72,
+          "auroc": 0.9809343434343435,
+          "ece_10": 0.06143768466659662,
+          "brier": 0.04469788852294101,
+          "log_loss": 0.17118506264099928,
+          "accuracy": 0.945054945054945
+        },
+        "platt": {
+          "n": 182,
+          "n_tumor": 110,
+          "n_normal": 72,
+          "auroc": 0.9809343434343435,
+          "ece_10": 0.03701665304272769,
+          "brier": 0.045941132289485945,
+          "log_loss": 0.17249511369852671,
+          "accuracy": 0.945054945054945
+        }
+      }
+    },
+    {
+      "held_out": "Lscc",
+      "n_calibration": 979,
+      "n_training_cohorts_inner": [
+        2,
+        3
+      ],
+      "n_training_cohorts_outer": 5,
+      "fitted_temperature": 1.7025041847079216,
+      "metrics": {
+        "before": {
+          "n": 212,
+          "n_tumor": 110,
+          "n_normal": 102,
+          "auroc": 0.997415329768271,
+          "ece_10": 0.005712118963375956,
+          "brier": 0.004822822239188052,
+          "log_loss": 0.0338138206288322,
+          "accuracy": 0.9952830188679245
+        },
+        "temperature": {
+          "n": 212,
+          "n_tumor": 110,
+          "n_normal": 102,
+          "auroc": 0.997415329768271,
+          "ece_10": 0.018782108321017444,
+          "brier": 0.005760881888538703,
+          "log_loss": 0.042155354727546036,
+          "accuracy": 0.9952830188679245
+        },
+        "platt": {
+          "n": 212,
+          "n_tumor": 110,
+          "n_normal": 102,
+          "auroc": 0.997415329768271,
+          "ece_10": 0.006272647989175626,
+          "brier": 0.005743261598605619,
+          "log_loss": 0.03152843401636755,
+          "accuracy": 0.9952830188679245
+        }
+      }
+    },
+    {
+      "held_out": "Pdac",
+      "n_calibration": 953,
+      "n_training_cohorts_inner": [
+        2,
+        3
+      ],
+      "n_training_cohorts_outer": 5,
+      "fitted_temperature": 1.7585873231566438,
+      "metrics": {
+        "before": {
+          "n": 238,
+          "n_tumor": 145,
+          "n_normal": 93,
+          "auroc": 0.8610307749351132,
+          "ece_10": 0.2505598434505343,
+          "brier": 0.2533371272649307,
+          "log_loss": 0.7602390365874236,
+          "accuracy": 0.6554621848739496
+        },
+        "temperature": {
+          "n": 238,
+          "n_tumor": 145,
+          "n_normal": 93,
+          "auroc": 0.8610307749351132,
+          "ece_10": 0.1998933509073673,
+          "brier": 0.20867270377790892,
+          "log_loss": 0.5785231006964413,
+          "accuracy": 0.6554621848739496
+        },
+        "platt": {
+          "n": 238,
+          "n_tumor": 145,
+          "n_normal": 93,
+          "auroc": 0.8610307749351132,
+          "ece_10": 0.140814445135347,
+          "brier": 0.1642711659582869,
+          "log_loss": 0.47894046283345953,
+          "accuracy": 0.7352941176470589
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "Please cite this version-specific author-review research release; it is not a journal article."
+type: dataset
+title: "Random cross-validation understates cross-cohort calibration error in multi-cohort proteomics: an accession-aligned evaluation-protocol contrast"
+version: "2026.10.02-author-review"
+date-released: "2026-10-02"
+doi: "10.5281/zenodo.23101188"
+url: "https://github.com/PeterPonyu/b28-proteomics-transfer/tree/author-review-2026-10-02"
+license: CC-BY-4.0
+authors:
+  - family-names: Fu
+    given-names: Zeyu
+    orcid: "https://orcid.org/0009-0001-8329-0108"
+    affiliation: "Army Medical University, Chongqing, China"
+abstract: "Corrected six-cohort evaluation-protocol contrast with accession/patient identities, saved predictions, analysis code and manuscript sources. Scientific submission remains on HOLD. Author-owned code is MIT; author content is CC BY 4.0; third-party conditions are retained."

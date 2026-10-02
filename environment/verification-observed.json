@@ -1,0 +1,16 @@
+{
+  "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:09:02) [GCC 11.2.0]",
+  "executable": "python",
+  "scope": "Actual offline public-export verifier runtime; not a new fit environment",
+  "packages": {
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scipy": "1.16.3",
+    "scikit-learn": "1.8.0",
+    "xgboost": "3.3.0",
+    "pytest": "8.4.2",
+    "PyMuPDF": "1.27.1",
+    "Pillow": "12.1.1",
+    "matplotlib": "3.10.8"
+  }
+}

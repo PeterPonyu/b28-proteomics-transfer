@@ -1,0 +1,105 @@
+\section{Discussion}
+
+The central interpretation is about evaluation units. A random split
+can be internally consistent and still answer a less demanding question
+than transfer to a new cancer/study cohort. In this corrected six-cohort
+matrix, both random and true-patient-grouped CV yield higher
+discrimination and lower calibration error than cohort holdout.
+The common accession panel was defined with knowledge of which features
+occur in the held-out cohort. This is not label leakage, but the
+contrast conditions on target-cohort feature availability; an unseen
+cohort with a prospectively locked panel remains unevaluated here.
+Patient grouping closes the identified patient-identity defect without
+erasing the contrast. It does not separate cancer-type biology from
+study-specific acquisition conditions.
+
+The distinction between macro and pooled performance is consequential.
+Pooled AUROC combines scores from different fitted models and
+cross-cohort positive--negative pairs; the macro result averages
+within-cohort ranking. Neither should be silently substituted for the
+other. Fixed-prediction patient resampling gives a useful sensitivity
+to the sampled patients within these six studies, but not a complete
+uncertainty analysis of refitted learning procedures or future cohorts.
+
+Global abundance summaries and missingness controls constrain
+interpretation of the high-dimensional model without converting AUROC
+increments into biological shares. Correct accession identity is
+necessary for this comparison; choosing the first protein associated
+with each gene does not guarantee a shared protein feature across
+cohorts. The source-normalized measurement scale also prevents the
+three-summary model from being described as a raw total-signal assay.
+
+The imputation and model-family sensitivities show why similar pooled
+performance is insufficient evidence of invariance. L2 and XGBoost
+have almost the same pooled AUROC, but differ substantially on CCRCC
+and PDAC. Calibration and selective prediction likewise require
+cohort-resolved reporting: improved retained accuracy is accompanied
+by a changed cohort mixture, and the specified recalibration maps help
+some cohorts more than others. Neither supplies a deployment guarantee.
+
+The correction and evaluation questions should remain separate.
+BERNN uses unlabeled validation and test features during representation
+warm-up \citep{PelletierBERNN}; its reported protocol is not an
+interchangeable numerical baseline for the transfer fits here. We have
+not benchmarked BERNN or pipeML \citep{HurtadoPipeML} head-to-head and
+make no superiority claim. A future harmonization comparison should
+state whether unlabeled target features are available and report
+calibration as well as discrimination. Our rejection curves are not
+conformal prediction sets and have no finite-sample coverage guarantee
+under cohort shift.
+
+Tumor-versus-normal is a high-effect testbed, not a clinically actionable
+biomarker task. Six selected cohorts from one CPTAC processing source
+do not establish multi-platform generality. The separate OV summary is
+historical context without prediction-level replay in this revision;
+it is not independent evidence for or against the six-cohort contrast.
+Historical diagnostics on the superseded feature matrix remain
+archived but cannot substitute for new evidence after identities change.
+Independent measurements crossing cancer type with acquisition
+environment, broader model comparisons, and full refit-based uncertainty
+would be needed for stronger transfer claims.
+
+The practical recommendation is to align the evaluation unit with the
+intended use, report within-cohort discrimination, calibration and
+coverage together, and distinguish macro from pooled summaries.
+The corrected data still support a protocol contrast in this design.
+They do not establish a general biological transfer law or identify a
+causal batch effect.
+
+\section{Supporting Information}
+The accompanying Supporting Information gives corrected sample and
+feature definitions, cohort-resolved AUROC and probability errors,
+conditional resampling ranges, L2 convergence checks, and an explicit
+disposition of historical side studies. Its tables and the main-text
+tables are generated from the same verified prediction records.
+
+\section{Data Availability Statement}
+All biological inputs are public CPTAC tables accessed through
+\texttt{cptac} \citep{cptacPkg}. The primary analysis uses the
+\texttt{umich} source for CCRCC, LUAD, UCEC, HNSCC, LSCC and PDAC.
+No new biological data were generated.
+
+The current code and research artifacts are available at
+\url{https://github.com/PeterPonyu/b28-proteomics-transfer}, release tag
+\texttt{author-review-2026-10-02}, with the version-specific archive
+\url{https://doi.org/10.5281/zenodo.23101188}. The package contains this
+Article and Supporting Information, their source and figure inputs,
+corrected sample/patient/fold and accession maps, stored predictions,
+analysis and verification programs, software environment records and a
+SHA-256 inventory. Dated candidate filenames retain their provenance;
+the current public manifest binds the included files to this revision.
+Default offline checks verify stored predictions and metrics and render
+the supplied PDFs without fitting models or downloading assay data.
+
+A complete scientific rerun requires separately acquired, matching
+CPTAC/UMICH abundance and mapping files and the recorded fit environment.
+\texttt{DATA\_SOURCES.md} records cohort/source/loader versions, filenames
+and input hashes; unrecorded PDC study accessions and per-cohort version
+labels are explicitly identified as unknown. Third-party raw proteomics
+are not redistributed. Author-owned code is MIT licensed; authored text,
+figures and derived result tables are CC BY 4.0 to the extent of author
+rights. Upstream conditions remain applicable as detailed in
+\texttt{THIRD\_PARTY\_NOTICES.md}. The earlier archive
+\url{https://doi.org/10.5281/zenodo.21870024} is historical, not the
+current corrected release. Artifact publication does not constitute
+independent scientific or clinical validation.

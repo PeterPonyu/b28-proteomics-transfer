@@ -1,0 +1,10 @@
+{
+  "status": "candidate-v2 row-level verification passed; manuscript HOLD",
+  "n_predictions": 2382,
+  "n_arms": 2,
+  "n_folds": 12,
+  "output_sha256": {
+    "predictions.csv": "f1c8872f5e1970d2d5518d5d327468b2c32fd6e16086baea73f302fb5402690f",
+    "results.json": "435f945941cc7b032860c8cade9099fe72e9bb57e388575cd242e921d4721504"
+  }
+}

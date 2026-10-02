@@ -1,0 +1,24 @@
+{
+  "status": "candidate identity, predictions and metrics independently verified; manuscript HOLD",
+  "n_predictions": 7146,
+  "n_prediction_sets": 6,
+  "n_patients": 719,
+  "n_true_patient_split_violations": 0,
+  "n_old_gene_first_accession_mismatches": 1234,
+  "input_sha256": {
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-ccrcc/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "fd111b453c205ce2f006d4d0ea9403b5e14e492df88e6611d1694c1e583fb6f4",
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-luad/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "c14afab469226dc7fb709109cbcc0228a9189b9cd6660519573714cf0b3f3bba",
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-ucec/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "c050e457a521bbbf36b28a0f556b4a530403eea98317673b78e94f676cee91cf",
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-hnscc/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "b2f2396ae04c569282c1792625a433b517854dff42445c3655257291455dc851",
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-lscc/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "24370f80b91ece04a5a4d8b6099fcf1155a0f24ef76f2614890aa2a15b8b99b0",
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-pdac/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "336d148faa5ca48054acdb6c03c723b6da9873eaeb6b641b028390ecaaad29a5"
+  },
+  "output_sha256": {
+    "sample-identity-and-folds.csv": "ba2bb320c34ce8eaa58ba74f538899be1a6aa400e428cd43d012ef632b901103",
+    "candidate-recalibration.csv": "84860bc408d23390ebe9d95680b6ea2a9114a7efad6b99796871e8573dde4413",
+    "gene-accession-audit.csv": "ac847d88bc15b96a414cfa81f48d0131db7791c0d2f7db144fe54f2ac34417ee",
+    "predictions.csv": "01cc17f4e9c94b0507010273f2adcc264b9e684eda9cf277f74ea5a6008a0ce8",
+    "candidate-riskcoverage.csv": "ba7d7f4a86b3efb9425c69dbeed2d8bd56d726957065085ae9775d2c3c198a0a",
+    "primary-accession-map.csv": "90804e029092ced5a27ba39803a22e8ba0781e52c01f4e6ac0b6e8db537d6a0a"
+  }
+}

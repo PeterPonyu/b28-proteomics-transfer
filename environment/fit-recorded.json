@@ -1,0 +1,14 @@
+{
+  "scope": "Recorded corrected model-fit environment; not fitted during export",
+  "versions": {
+    "python": "3.13.5",
+    "cptac": "1.5.14",
+    "xgboost": "3.3.0",
+    "numpy": "2.5.0",
+    "pandas": "3.0.3",
+    "scikit-learn": "1.9.0",
+    "scipy": "1.18.0"
+  },
+  "scipy_evidence": "existing capsule environment-patient.json; not listed by candidate-results",
+  "evidence": "candidate-v1/candidate-results.json and capsule reproducibility/environment-patient.json"
+}

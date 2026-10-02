@@ -1,0 +1,10 @@
+# Observed offline verification/build Python packages; no installer invoked
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.16.3
+scikit-learn==1.8.0
+xgboost==3.3.0
+pytest==8.4.2
+PyMuPDF==1.27.1
+Pillow==12.1.1
+matplotlib==3.10.8

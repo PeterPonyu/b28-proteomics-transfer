@@ -1,0 +1,8 @@
+{
+  "status": "source hashes and annotation inventory checked; predictions not replayed",
+  "ledger_sha256": "4557825ee96bdaf3417b0a2af1d48d11f280efd10595f3b06d65d6871d889fd2",
+  "n_samples": 103,
+  "n_tumor": 84,
+  "n_normal": 19,
+  "n_plexes": 12
+}

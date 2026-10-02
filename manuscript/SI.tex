@@ -1,0 +1,270 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{amsmath,booktabs,array,longtable,graphicx,microtype,xurl}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{caption}
+\makeatletter
+\let\tableinput\@@input
+\makeatother
+\captionsetup{font=small,labelfont=bf}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thepage}{S\arabic{page}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\emergencystretch=3em
+\newcommand{\metrictable}[2]{%
+\begin{table}[htbp]\centering
+\caption{#1}
+\begin{tabular}{lrrrr}\toprule
+Cohort & AUROC & ECE & Brier & Log-loss \\
+\midrule\tableinput{tables/#2}\bottomrule
+\end{tabular}\end{table}}
+\begin{document}
+\begin{center}
+{\Large\bfseries Supporting Information}\par
+\vspace{0.5em}
+{\large Random cross-validation understates cross-cohort calibration error in
+multi-cohort proteomics: an accession-aligned evaluation-protocol contrast}\par
+\vspace{0.5em}
+Zeyu Fu\par
+\href{mailto:fuzeyu99@126.com}{fuzeyu99@126.com}
+\end{center}
+
+\section*{S1. Scope and corrected identities}
+
+This supplement accompanies the accession-aligned six-cohort analysis.
+Its tables derive from the same stored predictions used by the article
+figures. Historical submission versions and historical gene-indexed
+analyses are not updated copies of this supplement.
+
+The 1,191 samples comprise 689 tumors, 496 adjacent-normal samples and
+six HNSCC cored-normal samples. The latter are identified by the source
+suffix \texttt{.C} and, like \texttt{.N} samples, have label zero.
+Both suffixes map to the corresponding unsuffixed patient identifier,
+with cohort included in the patient key. The resulting 719 patients
+include 470 with both tissue classes, 219 tumor-only and 30 normal-only
+patients. HNSCC contributes 110 tumors and 72 normals from 112 patients.
+Normal here means a source-defined nonmalignant sample, not a healthy
+donor. Patients with tumor, adjacent-normal and cored-normal samples
+stay together under the grouped split.
+
+The sample manifest records cohort, sample ID, tissue class, binary
+label, true patient ID, and fold for each of the three protocols.
+Sample CV splits 381 patients across evaluation folds. Patient-grouped
+CV and LOGO split zero true patients. The corrected GroupKFold
+partition was generated in scikit-learn 1.9.0 and is preserved by sample
+identity; it is not the historical partition based on 723 parsed keys.
+
+The primary protein intersection comprises 8,906 stable ENSP accessions.
+Version suffixes are stripped only after verifying unique stable
+accessions per cohort; gene annotation and, for the retained set, the
+complete accession version also agree across all cohorts. There is no
+gene-level averaging in this primary matrix. An old 9,675-gene
+intersection selected the first protein for each name; 1,234 names
+selected different stable accessions in different cohorts. The
+8,441-name sensitivity retains only the consistent first-accession
+subset. Neither mapping guarantees absence of every protein-quantification
+ambiguity, but the primary matrix no longer equates different stable
+accessions merely because they share a gene name.
+
+\section*{S2. Aggregation and probability-error definitions}
+
+AUROC, ten-bin ECE, Brier score and log-loss are computed within each
+source cohort on its stored out-of-fold predictions. Equal-cohort macro
+values average those six metrics. Pooled values concatenate all
+predictions before computing the metric. For sample and patient CV,
+within-cohort metrics combine predictions from different CV models;
+for LOGO, each cohort is scored by one model trained on the other five.
+The pooled AUROC additionally includes cross-cohort positive--negative
+pairs. It is not the mean of within-cohort or CV-fold AUROCs.
+
+The Brier score is $n^{-1}\sum_i(p_i-y_i)^2$. Log-loss is
+$-n^{-1}\sum_i[y_i\log p_i+(1-y_i)\log(1-p_i)]$, with numerical clipping
+provided by the recorded metric implementation. Ten-bin ECE weights
+the absolute mean-probability/tumor-fraction discrepancy by each bin's
+sample mass. No causal meaning is assigned to an AUROC increment or to
+the AUROC--ECE association across these six confounded cohorts.
+
+\clearpage
+\section*{S3. Cohort-resolved primary and comparator results}
+
+The tables below contain one held-out cohort per LOGO fold. ECE uses ten
+equal-width probability bins; Brier and log-loss are unbinned complementary
+summaries. No historical confidence intervals are attached to these
+corrected predictions.
+
+\metrictable{Primary accession-aligned XGBoost abundance predictions.}{primary_rows.tex}
+\metrictable{Three reference-normalized global abundance summaries:
+observed mean, median and detection fraction. These are not raw total
+intensity or an identified biological component.}{global_rows.tex}
+\metrictable{Missingness-only XGBoost predictions on the same accession
+matrix. Weak within-cohort ranking and pooled ranking are distinct.}{missingness_rows.tex}
+
+\clearpage
+\section*{S4. Mapping, model-family and imputation sensitivities}
+
+These analyses use the corrected tissue and patient identities. The
+mapping sensitivity changes the feature set; the L2 and deliberately
+leaky-median arms retain the primary 8,906 accessions and six LOGO folds.
+They are sensitivities on the same source cohorts, not independent
+replications.
+
+\metrictable{The 8,441 first-accession-consistent-gene mapping sensitivity.
+No inconsistent historical gene/protein match is retained.}{mapping_rows.tex}
+\metrictable{L2 logistic regression with train-fold median imputation and
+train-fold standardization.}{l2_rows.tex}
+\metrictable{XGBoost with deliberately full-dataset medians, including
+held-out feature values but no held-out labels. This is a diagnostic,
+not the recommended evaluation.}{leaky_rows.tex}
+
+\clearpage
+\section*{S5. Conditional paired-patient resampling}
+
+True patients are sampled with replacement within each of the six
+fixed cohorts, carrying all of each patient's sample predictions together.
+The same patient draw is used for sample CV, patient CV and LOGO, so
+each contrast is paired. We use 2,000 draws and NumPy random seed
+20260922. The stored model predictions are not refitted.
+
+The 2.5th--97.5th percentile ranges in Table~\ref{tab:resampling}
+describe sensitivity to the observed patient mixture conditional on
+those predictions and cohorts. They exclude retraining uncertainty,
+model-selection variability and variation in future study environments.
+The source cohorts are not asserted to be exchangeable random studies.
+Thus these ranges are not full algorithm-refit or future-study confidence
+intervals.
+
+\begin{table}[htbp]\centering
+\caption{Paired protocol AUROC contrasts and conditional percentile ranges.}
+\label{tab:resampling}
+\begin{tabular}{llrr}\toprule
+Aggregation & Contrast & Point & 2.5th--97.5th percentiles \\
+\midrule\tableinput{tables/resampling_rows.tex}\bottomrule
+\end{tabular}\end{table}
+
+\section*{S6. Linear model and recalibration implementation}
+
+The L2 classifier is \texttt{LogisticRegression} with $C=1$,
+\texttt{solver=lbfgs}, L2 penalty and \texttt{max\_iter=500}.
+Missing values use training-fold medians and scaling parameters are
+estimated on the training fold only. All six fits finished without a
+convergence warning (Table~\ref{tab:convergence}). The superseded
+method-lock text giving 1000 iterations does not describe these fits.
+
+\begin{table}[htbp]\centering
+\caption{Recorded convergence of the six L2 LOGO fits.}
+\label{tab:convergence}
+\begin{tabular}{lrrl}\toprule
+Held-out cohort & Iterations & Limit & Converged \\
+\midrule\tableinput{tables/l2_convergence_rows.tex}\bottomrule
+\end{tabular}\end{table}
+
+For recalibration, the recorded cohort order is CCRCC, LUAD, UCEC,
+HNSCC, LSCC and PDAC. After removing the outer test cohort, the first
+two remaining cohorts and the other three form the inner groups.
+Training on one and scoring the other, then swapping, yields the
+calibration data. Inner training-fold imputation is separate from the
+outer fit. Temperature scaling uses probability logits clipped to
+$[10^{-7},1-10^{-7}]$ before transformation, and bounded NLL
+minimization over $T\in[0.05,20]$. Platt scaling uses logistic
+regression on those logits ($C=10^6$, maximum 2000 iterations).
+The maps never use outer held-out labels.
+
+The inner models train on two or three cohorts, unlike the outer
+five-cohort predictor. This training-size mismatch limits generalization
+of any conclusion about recalibration. Distinct cohort-specific maps
+can also change cross-cohort pooled rankings while preserving each
+within-cohort monotone ranking. The main article reports the observed
+benefits and losses of this specific procedure without a universal claim.
+
+\clearpage
+\section*{S7. Side-study dependency disposition}
+
+The following distinctions prevent a historical computation from being
+mistaken for evidence on the corrected matrix. Archived files remain
+available; removal of their numerical claims from the current argument
+does not imply that their scientific questions should be abandoned.
+
+\textbf{Corrected matrix sensitivities retained.}
+The 8,441-feature mapping comparison, full-data-median XGBoost,
+train-fold L2, coverage curves, and split-half recalibration were rerun
+on corrected labels and aligned proteins, and verified against their
+stored prediction rows. Their results appear in the article and this
+supplement.
+
+\textbf{OV plex-LOGO retained as historical summary context.}
+The ovarian table and TMT annotation are independent of the six-cohort
+intersection. Their stored source checksums and the 103-sample,
+84-tumor/19-normal, 12-plex annotation inventory were checked during
+integration. The recorded pooled abundance AUROC is 0.985 under
+plex-LOGO and 0.987 under random CV; plex-LOGO ECE is 0.046 and
+global-summary AUROC is 0.951. There are only one to three normals per
+plex. These are summary-level historical results, not a new
+prediction-level replay. They are not promoted as an independently verified
+counterexample and do not deconfound the primary cancer/study comparison.
+The current six-cohort evidence itself does not support a universal gap.
+Historical bootstrap endpoints are
+not reused as uncertainty for the corrected six-cohort result.
+
+\textbf{Cohort-identity and label-permutation diagnostics not promoted.}
+The old six-class identity classifier, one-versus-rest XGBoost check,
+training-cohort identity estimates, and within-/across-cohort label
+permutations use the old feature/label definitions. Their numerical
+claims require a corrected-object rerun before reuse. They are not
+needed to establish the observed primary protocol contrast.
+
+\textbf{Location/scale and representation diagnostics not promoted.}
+Per-cohort median/MAD, mean/SD and ComBat-style location/scale restores,
+rank, quantile-normal, SVD whitening and PC-removal analyses depend on
+the previous matrix. Some additionally use held-out feature moments
+and therefore evaluate a target-feature-aware procedure. None of their
+historical numbers is presented as a corrected primary estimate.
+
+\textbf{Residual and injected-shift constructions not promoted.}
+Within-cohort, within-class mean removal uses outcome labels and is a
+diagnostic construction, not a deployable held-out prediction procedure.
+Synthetic label-null injection estimates a response to a specified
+imposed shift. It is not a biological decomposition, and its previous
+target magnitude depended on an obsolete headline AUROC. Both would
+need redefinition and rerunning to support new numerical claims.
+
+\textbf{Two-way variance claim withdrawn.}
+The earlier biological/cohort/interaction allocation does not identify
+biological and acquisition fractions in a confounded design. Its
+pseudo-interaction calculation is not retained as an interpretable
+two-way variance decomposition; rerunning the same formula on new
+data would not cure that problem.
+
+\textbf{BCM/UMICH dual-platform numbers not promoted.}
+The three-cohort comparison uses a distinct gene-level mapping and
+same-patient join. It is neither an independent-patient validation nor
+a crossed cancer-by-batch design. A separate accession/aggregation and
+sample-identity audit is required before quantitative reuse of its
+effect-size correlations and LOGO estimates. No corrected six-cohort
+claim relies on those archived numbers.
+
+\textbf{Other acquisition-metadata screens.}
+BRCA plex labels, the unavailable COAD mapping, and GBM/other cohort
+eligibility screens are historical source-inventory observations,
+not new predictive validation. No numerical BRCA or COAD performance
+claim is made. No pathway-enrichment analysis was performed.
+
+\section*{S8. Reproducibility boundary}
+
+The corrected fits use \texttt{cptac} 1.5.14, XGBoost 3.3.0, NumPy
+2.5.0, pandas 3.0.3 and scikit-learn 1.9.0. The primary model keeps the
+historical hyperparameter settings without an explicitly set XGBoost
+random state; sample stratification uses seed 28. Current figures and
+TeX tables derive from the verified stored predictions, so rendering
+does not invoke a model fit. Hash checks establish version identity,
+not scientific validity.
+
+The old submission directories are historical, unsynchronized packages.
+They must not be uploaded as this revised article. Full scientific
+clearance, any reinstatement of dependent side-study claims, and
+submission-package regeneration are separate from a successful local
+PDF build.
+\end{document}

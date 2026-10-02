@@ -1,0 +1,104 @@
+{
+  "status": "fixed-prediction conditional sensitivity, not a model-refit or new-study CI",
+  "n_draws": 2000,
+  "seed": 20260922,
+  "unit": "true patient nested within fixed source cohort",
+  "results": {
+    "macro_equal_cohort": {
+      "auroc": {
+        "sample_random": {
+          "point": 0.9908660488497952,
+          "conditional_percentile_range": [
+            0.9854892247992892,
+            0.9954604691425488
+          ]
+        },
+        "patient_grouped": {
+          "point": 0.9915684938402389,
+          "conditional_percentile_range": [
+            0.9866533264556676,
+            0.9958584001605542
+          ]
+        },
+        "leave_one_cohort_out": {
+          "point": 0.9343426660543135,
+          "conditional_percentile_range": [
+            0.9200184318766466,
+            0.9472233849567668
+          ]
+        }
+      },
+      "contrasts": {
+        "sample_minus_logo": {
+          "point": 0.05652338279548175,
+          "conditional_percentile_range": [
+            0.04416968713937848,
+            0.07031517693966621
+          ]
+        },
+        "patient_minus_logo": {
+          "point": 0.05722582778592544,
+          "conditional_percentile_range": [
+            0.044823969639587326,
+            0.07081681284875109
+          ]
+        },
+        "sample_minus_patient": {
+          "point": -0.0007024449904436958,
+          "conditional_percentile_range": [
+            -0.0032127286702745505,
+            0.0015614466584693858
+          ]
+        }
+      }
+    },
+    "pooled": {
+      "auroc": {
+        "sample_random": {
+          "point": 0.994156899253494,
+          "conditional_percentile_range": [
+            0.9905424705216983,
+            0.9971417613620366
+          ]
+        },
+        "patient_grouped": {
+          "point": 0.9944084330313001,
+          "conditional_percentile_range": [
+            0.9901150957905385,
+            0.9975880836537283
+          ]
+        },
+        "leave_one_cohort_out": {
+          "point": 0.9555305627995999,
+          "conditional_percentile_range": [
+            0.9453412494578904,
+            0.9644298575975071
+          ]
+        }
+      },
+      "contrasts": {
+        "sample_minus_logo": {
+          "point": 0.03862633645389413,
+          "conditional_percentile_range": [
+            0.030546113107114487,
+            0.047831010793957976
+          ]
+        },
+        "patient_minus_logo": {
+          "point": 0.038877870231700196,
+          "conditional_percentile_range": [
+            0.030612988552875045,
+            0.04815694304536893
+          ]
+        },
+        "sample_minus_patient": {
+          "point": -0.0002515337778060678,
+          "conditional_percentile_range": [
+            -0.0015340396604709844,
+            0.0010421781073061684
+          ]
+        }
+      }
+    }
+  }
+}

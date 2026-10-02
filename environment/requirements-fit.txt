@@ -1,0 +1,7 @@
+# Recorded fit versions; exact Python 3.13.5 separately required
+cptac==1.5.14
+xgboost==3.3.0
+numpy==2.5.0
+pandas==3.0.3
+scikit-learn==1.9.0
+scipy==1.18.0

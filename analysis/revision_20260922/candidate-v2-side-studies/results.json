@@ -1,0 +1,338 @@
+{
+  "status": "candidate side studies only; original manuscript HOLD",
+  "input_sha256": {
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-ccrcc/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "fd111b453c205ce2f006d4d0ea9403b5e14e492df88e6611d1694c1e583fb6f4",
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-luad/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "c14afab469226dc7fb709109cbcc0228a9189b9cd6660519573714cf0b3f3bba",
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-ucec/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "c050e457a521bbbf36b28a0f556b4a530403eea98317673b78e94f676cee91cf",
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-hnscc/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "b2f2396ae04c569282c1792625a433b517854dff42445c3655257291455dc851",
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-lscc/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "24370f80b91ece04a5a4d8b6099fcf1155a0f24ef76f2614890aa2a15b8b99b0",
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-pdac/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "336d148faa5ca48054acdb6c03c723b6da9873eaeb6b641b028390ecaaad29a5"
+  },
+  "candidate_v1_sha256": {
+    "candidate-results.json": "5fe3a5e0364ecb4256970f5aaf919607dea3dd40b2093a53d8657bab0d05b81c",
+    "predictions.csv": "01cc17f4e9c94b0507010273f2adcc264b9e684eda9cf277f74ea5a6008a0ce8",
+    "sample-identity-and-folds.csv": "ba2bb320c34ce8eaa58ba74f538899be1a6aa400e428cd43d012ef632b901103"
+  },
+  "shared_accessions": 8906,
+  "n_samples": 1191,
+  "protocol": "same six corrected LOGO folds as candidate-v1",
+  "full_data_median_leak": "deliberately includes all held-out feature values, no held-out labels",
+  "train_median_l2": {
+    "penalty": "l2",
+    "C": 1.0,
+    "solver": "lbfgs",
+    "max_iter": 500,
+    "standardization": "fit on each training fold only"
+  },
+  "software": {
+    "cptac": "1.5.14",
+    "xgboost": "3.3.0",
+    "numpy": "2.5.0",
+    "pandas": "3.0.3",
+    "scikit-learn": "1.9.0"
+  },
+  "fit_details": [
+    {
+      "arm": "full_data_median_leak_xgb",
+      "fold": 1,
+      "held_out": "Ccrcc",
+      "n_train": 997,
+      "n_test": 194,
+      "converged": null
+    },
+    {
+      "arm": "full_data_median_leak_xgb",
+      "fold": 2,
+      "held_out": "Hnscc",
+      "n_train": 1009,
+      "n_test": 182,
+      "converged": null
+    },
+    {
+      "arm": "full_data_median_leak_xgb",
+      "fold": 3,
+      "held_out": "Lscc",
+      "n_train": 979,
+      "n_test": 212,
+      "converged": null
+    },
+    {
+      "arm": "full_data_median_leak_xgb",
+      "fold": 4,
+      "held_out": "Luad",
+      "n_train": 978,
+      "n_test": 213,
+      "converged": null
+    },
+    {
+      "arm": "full_data_median_leak_xgb",
+      "fold": 5,
+      "held_out": "Pdac",
+      "n_train": 953,
+      "n_test": 238,
+      "converged": null
+    },
+    {
+      "arm": "full_data_median_leak_xgb",
+      "fold": 6,
+      "held_out": "Ucec",
+      "n_train": 1039,
+      "n_test": 152,
+      "converged": null
+    },
+    {
+      "arm": "train_median_l2",
+      "fold": 1,
+      "held_out": "Ccrcc",
+      "n_train": 997,
+      "n_test": 194,
+      "converged": true,
+      "iterations": 15,
+      "max_abs_train_center": 7.927358183223987e-07
+    },
+    {
+      "arm": "train_median_l2",
+      "fold": 2,
+      "held_out": "Hnscc",
+      "n_train": 1009,
+      "n_test": 182,
+      "converged": true,
+      "iterations": 15,
+      "max_abs_train_center": 9.47058140354784e-07
+    },
+    {
+      "arm": "train_median_l2",
+      "fold": 3,
+      "held_out": "Lscc",
+      "n_train": 979,
+      "n_test": 212,
+      "converged": true,
+      "iterations": 44,
+      "max_abs_train_center": 1.4336774256662466e-06
+    },
+    {
+      "arm": "train_median_l2",
+      "fold": 4,
+      "held_out": "Luad",
+      "n_train": 978,
+      "n_test": 213,
+      "converged": true,
+      "iterations": 43,
+      "max_abs_train_center": 1.1923975762329064e-06
+    },
+    {
+      "arm": "train_median_l2",
+      "fold": 5,
+      "held_out": "Pdac",
+      "n_train": 953,
+      "n_test": 238,
+      "converged": true,
+      "iterations": 12,
+      "max_abs_train_center": 9.376004754813039e-07
+    },
+    {
+      "arm": "train_median_l2",
+      "fold": 6,
+      "held_out": "Ucec",
+      "n_train": 1039,
+      "n_test": 152,
+      "converged": true,
+      "iterations": 15,
+      "max_abs_train_center": 1.3201940873841522e-06
+    }
+  ],
+  "results": {
+    "full_data_median_leak_xgb": {
+      "by_cohort": {
+        "Ccrcc": {
+          "n": 194,
+          "n_tumor": 110,
+          "n_normal": 84,
+          "auroc": 0.850974025974026,
+          "ece_10": 0.274039658458577,
+          "brier": 0.24428578753901548,
+          "log_loss": 0.867639262918893,
+          "accuracy": 0.6597938144329897
+        },
+        "Luad": {
+          "n": 213,
+          "n_tumor": 111,
+          "n_normal": 102,
+          "auroc": 0.9997350291467939,
+          "ece_10": 0.019081601954612906,
+          "brier": 0.007343631685285901,
+          "log_loss": 0.02829742651002117,
+          "accuracy": 0.9906103286384976
+        },
+        "Ucec": {
+          "n": 152,
+          "n_tumor": 103,
+          "n_normal": 49,
+          "auroc": 0.91143253417872,
+          "ece_10": 0.15397577504872492,
+          "brier": 0.14333539239952964,
+          "log_loss": 0.5482756305544728,
+          "accuracy": 0.8223684210526315
+        },
+        "Hnscc": {
+          "n": 182,
+          "n_tumor": 110,
+          "n_normal": 72,
+          "auroc": 0.9805555555555556,
+          "ece_10": 0.026135004414654862,
+          "brier": 0.03783517461534817,
+          "log_loss": 0.1512019208138367,
+          "accuracy": 0.9395604395604396
+        },
+        "Lscc": {
+          "n": 212,
+          "n_tumor": 110,
+          "n_normal": 102,
+          "auroc": 0.9953654188948307,
+          "ece_10": 0.00580171594258401,
+          "brier": 0.004969549040178484,
+          "log_loss": 0.037845227184496705,
+          "accuracy": 0.9952830188679245
+        },
+        "Pdac": {
+          "n": 238,
+          "n_tumor": 145,
+          "n_normal": 93,
+          "auroc": 0.8576937337782722,
+          "ece_10": 0.2538952817044714,
+          "brier": 0.2551226613279694,
+          "log_loss": 0.7742638209907333,
+          "accuracy": 0.6470588235294118
+        }
+      },
+      "macro_equal_cohort": {
+        "auroc": 0.9326260495880331,
+        "ece_10": 0.12215483958727084,
+        "brier": 0.11548203276788786,
+        "log_loss": 0.40125388149540897,
+        "accuracy": 0.842445807680316
+      },
+      "pooled": {
+        "n": 1191,
+        "n_tumor": 689,
+        "n_normal": 502,
+        "auroc": 0.954275785103418,
+        "ece_10": 0.11438061729646118,
+        "brier": 0.1170456385800431,
+        "log_loss": 0.4009269452932038,
+        "accuracy": 0.8396305625524769
+      }
+    },
+    "train_median_l2": {
+      "by_cohort": {
+        "Ccrcc": {
+          "n": 194,
+          "n_tumor": 110,
+          "n_normal": 84,
+          "auroc": 0.9036796536796536,
+          "ece_10": 0.11641058516094285,
+          "brier": 0.1326763235335413,
+          "log_loss": 0.7711551180393721,
+          "accuracy": 0.8350515463917526
+        },
+        "Luad": {
+          "n": 213,
+          "n_tumor": 111,
+          "n_normal": 102,
+          "auroc": 1.0,
+          "ece_10": 0.013249821928884006,
+          "brier": 0.0033366057498005063,
+          "log_loss": 0.015509510322451025,
+          "accuracy": 1.0
+        },
+        "Ucec": {
+          "n": 152,
+          "n_tumor": 103,
+          "n_normal": 49,
+          "auroc": 0.9623538735882703,
+          "ece_10": 0.07939155198649034,
+          "brier": 0.07463483380837427,
+          "log_loss": 0.28052063392226223,
+          "accuracy": 0.9078947368421053
+        },
+        "Hnscc": {
+          "n": 182,
+          "n_tumor": 110,
+          "n_normal": 72,
+          "auroc": 0.9866161616161616,
+          "ece_10": 0.05031445173511204,
+          "brier": 0.05071316673298956,
+          "log_loss": 0.2585010519763874,
+          "accuracy": 0.9395604395604396
+        },
+        "Lscc": {
+          "n": 212,
+          "n_tumor": 110,
+          "n_normal": 102,
+          "auroc": 0.9951871657754011,
+          "ece_10": 0.0037657774987104884,
+          "brier": 0.004786057268508582,
+          "log_loss": 0.056287034432550016,
+          "accuracy": 0.9952830188679245
+        },
+        "Pdac": {
+          "n": 238,
+          "n_tumor": 145,
+          "n_normal": 93,
+          "auroc": 0.75669262143122,
+          "ece_10": 0.24092146072056117,
+          "brier": 0.25392051842287355,
+          "log_loss": 0.9380079947904041,
+          "accuracy": 0.6596638655462185
+        }
+      },
+      "macro_equal_cohort": {
+        "auroc": 0.9340882460151176,
+        "ece_10": 0.0840089415051168,
+        "brier": 0.08667791758601462,
+        "log_loss": 0.38666355724723783,
+        "accuracy": 0.8895756012014068
+      },
+      "pooled": {
+        "n": 1191,
+        "n_tumor": 689,
+        "n_normal": 502,
+        "auroc": 0.9556332001457161,
+        "ece_10": 0.07969648704197548,
+        "brier": 0.09107634122591036,
+        "log_loss": 0.40115256127122034,
+        "accuracy": 0.8832913518052057
+      }
+    }
+  },
+  "contrast_against_accession_xgb": {
+    "full_data_median_leak_xgb": {
+      "macro_equal_cohort": {
+        "auroc": -0.0017166164662804073,
+        "ece_10": 0.002876063501621104,
+        "brier": 0.0037289164986770013,
+        "log_loss": 0.013208128242464978
+      },
+      "pooled": {
+        "auroc": -0.0012547776961818746,
+        "ece_10": 0.004372854422274267,
+        "brier": 0.0035870878073419182,
+        "log_loss": 0.01293030872899581
+      }
+    },
+    "train_median_l2": {
+      "macro_equal_cohort": {
+        "auroc": -0.0002544200391958462,
+        "ece_10": -0.03526983458053294,
+        "brier": -0.025075198683196243,
+        "log_loss": -0.00138219600570616
+      },
+      "pooled": {
+        "auroc": 0.00010263734611615227,
+        "ece_10": -0.030311275832211437,
+        "brier": -0.02238220954679082,
+        "log_loss": 0.013155924707012379
+      }
+    }
+  }
+}

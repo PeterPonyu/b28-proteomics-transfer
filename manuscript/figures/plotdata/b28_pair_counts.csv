@@ -1,0 +1,7 @@
+cohort,n_samples,n_tumor,n_normal,n_patients,n_paired_patients,n_tumor_only_patients,n_normal_only_patients
+Ccrcc,194,110,84,110,84,26,0
+Luad,213,111,102,111,102,9,0
+Ucec,152,103,49,122,30,73,19
+Hnscc,182,110,72,112,68,42,2
+Lscc,212,110,102,110,102,8,0
+Pdac,238,145,93,154,84,61,9

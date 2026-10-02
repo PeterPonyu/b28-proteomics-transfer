@@ -1,0 +1,490 @@
+{
+  "schema": "b28-ov-plex-logo/v1",
+  "created_utc": "2026-09-11T09:11:57Z",
+  "scope": "Labeled Limitations side-study on official face aeb28583 (or successor). Same-cancer (OV) leave-one-TMT-plex-out tumor/normal AUROC. Cancer type is constant; processing batch varies. Not a deconfounding of the locked six umich LOGO AUROC 0.946. Not a replacement of 0.946.",
+  "ready": "NO",
+  "deconfounded_of_locked_six": false,
+  "software": {
+    "cptac": "1.5.14",
+    "xgboost": "3.3.0",
+    "numpy": "2.5.0",
+    "pandas": "3.0.3"
+  },
+  "inputs": {
+    "annotation": {
+      "path": "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-ov/OV_sample_TMT_annotation_UMich_GENCODE34_0315.csv.gz",
+      "sha256": "640737a9b4f8593de39450341b4e25505b998e0862a0f2f4f91f232f15c531d0",
+      "bytes": 3536
+    },
+    "abundance": {
+      "path": "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-ov/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz",
+      "sha256": "9a253bd51bf02f5740b409865a27b0d34b903b0f5e7024c3b1c4e176a5b99e5f",
+      "bytes": 9640976
+    }
+  },
+  "labels": {
+    "source": "OV_sample_TMT_annotation_UMich_GENCODE34_0315.csv.gz type column",
+    "convention": "cptac umichov.py maps -N -> .N; Tumor/Normal only; QC/Ref dropped",
+    "n_samples": 103,
+    "n_tumor": 84,
+    "n_normal": 19,
+    "n_genes": 10589,
+    "n_plexes": 12,
+    "join": "103/103 proteomics rows matched to Tumor/Normal annotation pids",
+    "per_plex_counts": [
+      {
+        "batch": 1,
+        "Normal": 1,
+        "Tumor": 7
+      },
+      {
+        "batch": 2,
+        "Normal": 3,
+        "Tumor": 5
+      },
+      {
+        "batch": 3,
+        "Normal": 2,
+        "Tumor": 7
+      },
+      {
+        "batch": 4,
+        "Normal": 2,
+        "Tumor": 6
+      },
+      {
+        "batch": 5,
+        "Normal": 1,
+        "Tumor": 8
+      },
+      {
+        "batch": 6,
+        "Normal": 1,
+        "Tumor": 7
+      },
+      {
+        "batch": 7,
+        "Normal": 1,
+        "Tumor": 8
+      },
+      {
+        "batch": 8,
+        "Normal": 2,
+        "Tumor": 7
+      },
+      {
+        "batch": 9,
+        "Normal": 2,
+        "Tumor": 7
+      },
+      {
+        "batch": 10,
+        "Normal": 2,
+        "Tumor": 7
+      },
+      {
+        "batch": 11,
+        "Normal": 1,
+        "Tumor": 8
+      },
+      {
+        "batch": 12,
+        "Normal": 1,
+        "Tumor": 7
+      }
+    ]
+  },
+  "model": {
+    "class": "xgboost.XGBClassifier",
+    "params": {
+      "n_estimators": 150,
+      "max_depth": 4,
+      "learning_rate": 0.1,
+      "subsample": 0.8,
+      "colsample_bytree": 0.3,
+      "eval_metric": "logloss",
+      "tree_method": "hist",
+      "n_jobs": 4,
+      "verbosity": 0,
+      "random_state": 28
+    },
+    "impute": "train-fold column median; NaN median -> 0",
+    "matched_script": "/home/zeyufu/meta_analysis/b28/b28_hardened.py"
+  },
+  "results": {
+    "plex_logo_abundance": {
+      "per_fold": [
+        {
+          "held_out_plex": 1,
+          "n": 8,
+          "n_tumor": 7,
+          "n_normal": 1,
+          "auc": 1.0,
+          "ece": 0.031
+        },
+        {
+          "held_out_plex": 2,
+          "n": 8,
+          "n_tumor": 5,
+          "n_normal": 3,
+          "auc": 1.0,
+          "ece": 0.108
+        },
+        {
+          "held_out_plex": 3,
+          "n": 9,
+          "n_tumor": 7,
+          "n_normal": 2,
+          "auc": 0.929,
+          "ece": 0.121
+        },
+        {
+          "held_out_plex": 4,
+          "n": 8,
+          "n_tumor": 6,
+          "n_normal": 2,
+          "auc": 1.0,
+          "ece": 0.032
+        },
+        {
+          "held_out_plex": 5,
+          "n": 9,
+          "n_tumor": 8,
+          "n_normal": 1,
+          "auc": 1.0,
+          "ece": 0.04
+        },
+        {
+          "held_out_plex": 6,
+          "n": 8,
+          "n_tumor": 7,
+          "n_normal": 1,
+          "auc": 1.0,
+          "ece": 0.036
+        },
+        {
+          "held_out_plex": 7,
+          "n": 9,
+          "n_tumor": 8,
+          "n_normal": 1,
+          "auc": 1.0,
+          "ece": 0.018
+        },
+        {
+          "held_out_plex": 8,
+          "n": 9,
+          "n_tumor": 7,
+          "n_normal": 2,
+          "auc": 1.0,
+          "ece": 0.055
+        },
+        {
+          "held_out_plex": 9,
+          "n": 9,
+          "n_tumor": 7,
+          "n_normal": 2,
+          "auc": 1.0,
+          "ece": 0.119
+        },
+        {
+          "held_out_plex": 10,
+          "n": 9,
+          "n_tumor": 7,
+          "n_normal": 2,
+          "auc": 1.0,
+          "ece": 0.152
+        },
+        {
+          "held_out_plex": 11,
+          "n": 9,
+          "n_tumor": 8,
+          "n_normal": 1,
+          "auc": 1.0,
+          "ece": 0.029
+        },
+        {
+          "held_out_plex": 12,
+          "n": 8,
+          "n_tumor": 7,
+          "n_normal": 1,
+          "auc": 1.0,
+          "ece": 0.109
+        }
+      ],
+      "skipped_folds": [],
+      "pooled_auc": 0.985,
+      "ci": [
+        0.962,
+        1.0
+      ],
+      "pooled_ece": 0.046,
+      "n_pooled": 103
+    },
+    "plex_logo_missingness": {
+      "per_fold": [
+        {
+          "held_out_plex": 1,
+          "n": 8,
+          "n_tumor": 7,
+          "n_normal": 1,
+          "auc": 0.5,
+          "ece": 0.134
+        },
+        {
+          "held_out_plex": 2,
+          "n": 8,
+          "n_tumor": 5,
+          "n_normal": 3,
+          "auc": 0.6,
+          "ece": 0.278
+        },
+        {
+          "held_out_plex": 3,
+          "n": 9,
+          "n_tumor": 7,
+          "n_normal": 2,
+          "auc": 0.321,
+          "ece": 0.031
+        },
+        {
+          "held_out_plex": 4,
+          "n": 8,
+          "n_tumor": 6,
+          "n_normal": 2,
+          "auc": 0.5,
+          "ece": 0.116
+        },
+        {
+          "held_out_plex": 5,
+          "n": 9,
+          "n_tumor": 8,
+          "n_normal": 1,
+          "auc": 0.5,
+          "ece": 0.2
+        },
+        {
+          "held_out_plex": 6,
+          "n": 8,
+          "n_tumor": 7,
+          "n_normal": 1,
+          "auc": 0.571,
+          "ece": 0.046
+        },
+        {
+          "held_out_plex": 7,
+          "n": 9,
+          "n_tumor": 8,
+          "n_normal": 1,
+          "auc": 0.562,
+          "ece": 0.028
+        },
+        {
+          "held_out_plex": 8,
+          "n": 9,
+          "n_tumor": 7,
+          "n_normal": 2,
+          "auc": 0.5,
+          "ece": 0.063
+        },
+        {
+          "held_out_plex": 9,
+          "n": 9,
+          "n_tumor": 7,
+          "n_normal": 2,
+          "auc": 0.321,
+          "ece": 0.041
+        },
+        {
+          "held_out_plex": 10,
+          "n": 9,
+          "n_tumor": 7,
+          "n_normal": 2,
+          "auc": 0.357,
+          "ece": 0.102
+        },
+        {
+          "held_out_plex": 11,
+          "n": 9,
+          "n_tumor": 8,
+          "n_normal": 1,
+          "auc": 0.688,
+          "ece": 0.023
+        },
+        {
+          "held_out_plex": 12,
+          "n": 8,
+          "n_tumor": 7,
+          "n_normal": 1,
+          "auc": 0.357,
+          "ece": 0.095
+        }
+      ],
+      "skipped_folds": [],
+      "pooled_auc": 0.563,
+      "ci": [
+        0.413,
+        0.716
+      ],
+      "pooled_ece": 0.086,
+      "n_pooled": 103
+    },
+    "plex_logo_trivial": {
+      "per_fold": [
+        {
+          "held_out_plex": 1,
+          "n": 8,
+          "n_tumor": 7,
+          "n_normal": 1,
+          "auc": 1.0,
+          "ece": 0.054
+        },
+        {
+          "held_out_plex": 2,
+          "n": 8,
+          "n_tumor": 5,
+          "n_normal": 3,
+          "auc": 1.0,
+          "ece": 0.058
+        },
+        {
+          "held_out_plex": 3,
+          "n": 9,
+          "n_tumor": 7,
+          "n_normal": 2,
+          "auc": 1.0,
+          "ece": 0.081
+        },
+        {
+          "held_out_plex": 4,
+          "n": 8,
+          "n_tumor": 6,
+          "n_normal": 2,
+          "auc": 1.0,
+          "ece": 0.02
+        },
+        {
+          "held_out_plex": 5,
+          "n": 9,
+          "n_tumor": 8,
+          "n_normal": 1,
+          "auc": 1.0,
+          "ece": 0.109
+        },
+        {
+          "held_out_plex": 6,
+          "n": 8,
+          "n_tumor": 7,
+          "n_normal": 1,
+          "auc": 1.0,
+          "ece": 0.029
+        },
+        {
+          "held_out_plex": 7,
+          "n": 9,
+          "n_tumor": 8,
+          "n_normal": 1,
+          "auc": 1.0,
+          "ece": 0.011
+        },
+        {
+          "held_out_plex": 8,
+          "n": 9,
+          "n_tumor": 7,
+          "n_normal": 2,
+          "auc": 1.0,
+          "ece": 0.021
+        },
+        {
+          "held_out_plex": 9,
+          "n": 9,
+          "n_tumor": 7,
+          "n_normal": 2,
+          "auc": 1.0,
+          "ece": 0.103
+        },
+        {
+          "held_out_plex": 10,
+          "n": 9,
+          "n_tumor": 7,
+          "n_normal": 2,
+          "auc": 1.0,
+          "ece": 0.1
+        },
+        {
+          "held_out_plex": 11,
+          "n": 9,
+          "n_tumor": 8,
+          "n_normal": 1,
+          "auc": 1.0,
+          "ece": 0.072
+        },
+        {
+          "held_out_plex": 12,
+          "n": 8,
+          "n_tumor": 7,
+          "n_normal": 1,
+          "auc": 0.429,
+          "ece": 0.12
+        }
+      ],
+      "skipped_folds": [],
+      "pooled_auc": 0.951,
+      "ci": [
+        0.852,
+        1.0
+      ],
+      "pooled_ece": 0.037,
+      "n_pooled": 103
+    },
+    "random_5fold_abundance": {
+      "note": "train-fold median impute; StratifiedKFold n=5 shuffle random_state=28",
+      "per_fold": [
+        {
+          "fold": 1,
+          "n": 21,
+          "auc": 1.0,
+          "ece": 0.068
+        },
+        {
+          "fold": 2,
+          "n": 21,
+          "auc": 1.0,
+          "ece": 0.04
+        },
+        {
+          "fold": 3,
+          "n": 21,
+          "auc": 0.941,
+          "ece": 0.074
+        },
+        {
+          "fold": 4,
+          "n": 20,
+          "auc": 1.0,
+          "ece": 0.067
+        },
+        {
+          "fold": 5,
+          "n": 20,
+          "auc": 0.969,
+          "ece": 0.054
+        }
+      ],
+      "pooled_auc": 0.987,
+      "ci": [
+        0.966,
+        1.0
+      ],
+      "pooled_ece": 0.044
+    },
+    "wedge_vs_missingness": 0.422,
+    "wedge_vs_trivial": 0.034,
+    "random_minus_plex_logo": 0.002
+  },
+  "caveats": [
+    "Per-plex test sets have 1-3 normals; per-fold AUROC is noisy. Pooled is the headline.",
+    "OV is not one of the locked six cohorts (CCRCC LUAD UCEC HNSCC LSCC PDAC).",
+    "Do not substitute this number for the manuscript LOGO AUROC 0.946.",
+    "Official-face print is a labeled Limitations side-study only; do not treat 0.985 as locked 0.946."
+  ]
+}

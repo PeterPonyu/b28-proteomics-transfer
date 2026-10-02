@@ -1,0 +1,155 @@
+\documentclass[journal=jprobs,manuscript=article,hyperref,doi=true]{achemso}
+% ACS Journal of Proteome Research (JPR) submission template, built on the
+% ACS-sanctioned achemso LaTeX class (CTAN, config achemso-jprobs.cfg,
+% "J. Proteome Res.", v3.13g). achemso supplies the JPR layout, ACS numbered
+% superscript citation style (natbib + achemso.bst), unnumbered section headings
+% (\SectionNumbersOff for jprobs), keyword support, and the graphical
+% Table-of-Contents (TOC) entry mechanism required for JPR articles.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{newtxtext,newtxmath}   % Times New Roman (metric-compatible) text + math
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{microtype}
+\usepackage{caption}
+\hypersetup{colorlinks=true,allcolors=blue}
+\frenchspacing
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+% Keep the reader-facing figure/table number in the caption.  The prior
+% submission suppressed the label globally, which made a floated page hard to
+% audit when several figures shared a page.  ACS's period separator gives the
+% explicit ``Figure N.'' / ``Table N.'' form used by the text references.
+\captionsetup{labelformat=default,labelsep=period,justification=justified,font=small,skip=5pt}
+\emergencystretch=4em   % absorb the occasional long unbreakable token in justified text
+\usepackage{xurl}  % break long \path names at / and _
+% xurl supplies breakpoints inside long identifiers and SHA-256 strings.
+
+% Visual-Ralph layout only (2026-09-11): tighten title skips; absorb leftover
+% TOC page onto the leftover-refs page. Do not change title wording or science.
+\makeatletter
+\let\tableinput\@@input
+\setlength{\acs@space@pre@title}{0pt}
+\setlength{\acs@space@post@title}{0.75em}
+\setlength{\acs@space@post@author}{0.55em}
+\setlength{\acs@space@post@address}{0.55em}
+\setlength{\acs@space@post@email}{0.55em}
+\renewcommand{\acs@tocentry@print}[1]{%
+  \gdef\acs@tocentry@text{\normalsize#1}%
+  \AtEndDocument{\acs@tocentry@print@aux}%
+}
+\makeatother
+\pdfminorversion=7
+
+% Keep the four-line title compact so the abstract remains one unit.
+% Body and abstract keep the class's review spacing.
+\renewcommand{\titlefont}{\bfseries\sffamily\setstretch{1.15}}
+
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.70}
+\renewcommand{\floatpagefraction}{0.75}
+\renewcommand{\textfraction}{0.10}
+
+\title{Random cross-validation understates cross-cohort calibration error in multi-cohort proteomics: an accession-aligned
+evaluation-protocol contrast}
+
+\author{Zeyu Fu}
+\altaffiliation{ORCID 0009-0001-8329-0108}
+\email{fuzeyu99@126.com}
+\affiliation[Army Medical University]
+  {State Key Laboratory of Trauma and Chemical Poisoning, Institute of Combined Injury,
+   Chongqing Engineering Research Center for Nanomedicine, College of Preventive Medicine,
+   Army Medical University, Chongqing, China}
+
+\keywords{proteomics; mass spectrometry; machine learning; cross-study validation;
+model calibration; data leakage; CPTAC; selective prediction}
+
+\hypersetup{pdfauthor={Zeyu Fu},pdftitle={Random cross-validation understates cross-cohort calibration error in multi-cohort proteomics: an accession-aligned evaluation-protocol contrast}}
+
+\begin{document}
+
+\begin{tocentry}
+\centering
+% Purpose-built single-panel TOC (ACS ≤ 3.25 in wide); replaces multi-panel F1 reuse.
+% The confound disclosure is rendered INSIDE the art (panel title "A protocol contrast, not a
+% proteomic transfer law" and the cancer/study confound), because ACS strips the
+% graphical abstract from the article body and it is read on its own; see make_b28_figures.R.
+\includegraphics[width=3.25in]{figures/b28_TOC.pdf}
+\end{tocentry}
+
+\begin{abstract}
+Cancer type and study are confounded in the six-cohort proteomics design examined here, so a protocol contrast cannot identify biological and acquisition effects separately. We audited tumor-versus-source-defined-normal classification in 1{,}191 CPTAC samples from 719 patients using 8{,}906 accession-aligned protein features. The shared feature intersection was defined using all six cohorts before evaluation, so LOGO is conditional on target-cohort feature availability rather than target-blind panel selection. Correcting cored-normal labels and patient identities, leave-one-cohort-out (LOGO) evaluation yielded equal-cohort macro AUROC 0.9343 and separately computed pooled AUROC 0.9555, with pooled ten-bin expected calibration error (ECE) 0.1100. Sample-stratified and true-patient-grouped five-fold cross-validation gave pooled AUROC 0.9942 and 0.9944, and ECE 0.0199 and 0.0135. Patient grouping did not erase the protocol gap. Missingness and three reference-normalized global summaries gave macro/pooled AUROC 0.5445/0.5116 and 0.8172/0.8492; differences from abundance are predictive increments, not biological signal fractions. Confidence-ranked abstention increased retained accuracy from 0.8497 to 119/119 at 10\% coverage, with 107 retained samples from two easier cohorts. Model and recalibration sensitivities showed cohort-dependent effects despite small pooled differences. The corrected evidence supports cohort-resolved evaluation of ranking, probability error and coverage in this design, not a deconfounded biological transfer estimate or clinical biomarker.
+\end{abstract}
+
+\section{Introduction}
+
+This design cannot separate cancer-type biology from study-specific acquisition conditions. Each leave-one-cohort-out group is a distinct cancer/study cohort; the data do not establish that each cohort corresponds to one instrument, laboratory or acquisition run. Transfer discrimination and calibration therefore cannot be attributed to biology or technical effects alone \citep{LeekBatch}. The result is a protocol contrast under that confound, not a proteomic transfer law.
+
+Quantitative mass-spectrometry proteomics now supports supervised classifiers for tumor status, subtype, and
+related endpoints, and the Clinical Proteomic Tumor Analysis Consortium (CPTAC) has made harmonized proteomic data
+for many cancer types openly available \citep{CPTACportal,CPTACpancancer}. When such a classifier is reported, its
+performance is most often estimated by random $k$-fold cross-validation. In a multi-cohort proteomic dataset, that
+protocol places samples from the same study cohort on both sides of the train/test split. Such a split answers an interpolation question; presenting it as an estimate of transfer to an unseen study can give an optimistic impression of generalization \citep{KapoorLeakage}. The practically relevant question is rarely ``how well does the model do on held-out
+samples from the studies it was trained on'' but ``how well, and how reliably, does it transfer to a new
+study'' --- which only a grouped, leave-one-study-out split estimates, and even then only as a protocol
+contrast when cancer type and study are locked together. This inflation of within-study, random-split
+performance relative to cross-study evaluation is not new to proteomics: cross-study validation frameworks
+for genomic and transcriptomic prediction algorithms have previously shown that random cross-validation
+within a pooled multi-study dataset systematically overestimates performance relative to leave-one-study-out
+evaluation \citep{BernauCrossStudy}. Our contribution is to demonstrate this protocol difference on real
+proteomics with a coupled discrimination-and-calibration analysis, not to report a new biological law.
+
+Related work separates several causes of unreliable validation. The pipeML preprint recomputes
+global features within folds and supports cohort-aware validation, including leave-one-dataset-out
+analysis \citep{HurtadoPipeML}. Our audit addresses the consequence of choosing a sample-level
+versus cohort-level evaluation unit after defining a fixed feature matrix; it does not introduce
+fold-aware preprocessing or grouped validation. Austin and colleagues describe a different failure:
+single-observation leave-one-out aggregation can underestimate rank performance because training-fold
+label prevalence is negatively associated with the held-out label, motivating rebalanced
+cross-validation \citep{AustinDistributional}. That mechanism is distinct from the optimistic
+random-fold versus cohort-transfer contrast examined here; we do not infer that every grouped
+validation design is unbiased. In LC--MS data, BERNN couples representation learning and
+batch-effect removal to classification, and shows that stronger batch mixing need not preserve
+predictive information \citep{PelletierBERNN}. Our contribution is a coupled audit of discrimination,
+calibration, coverage and retained-cohort composition on a fixed proteomics matrix, not a new
+batch-correction method.
+
+Discrimination (the area under the ROC curve, AUROC) is one axis of reliability; calibration --- whether a reported probability matches the
+observed frequency --- is the other, and modern flexible classifiers are frequently miscalibrated
+\citep{GuoCalibration}. For a reliability audit, a well-ranked but overconfident model is dangerous precisely when it
+is wrong, so calibration must be measured on the same transfer split as discrimination. We therefore evaluate, on
+real CPTAC proteomics under leave-one-cohort-out, three coupled questions: (i) how high-dimensional abundance compares with missingness and global abundance summaries; (ii) how
+calibration varies across held-out cohorts and whether overconfidence tracks transfer difficulty; and (iii) how
+much a random-split protocol misstates both relative to the grouped split. We use tumor-versus-normal as a
+deliberately high-effect, source-defined label so that the reliability phenomena --- not the difficulty of the
+biological task --- are what is under study.
+
+
+The evaluation unit is a cohort, a patient, or an individual sample depending on the question, and those units are not interchangeable. A sample-level split estimates interpolation among the cohorts represented on both sides of the split; a leave-one-cohort-out split withholds an entire study cohort. Because the six cohorts pair cancer type with study, neither split identifies a biological transfer effect by itself. We therefore treat the contrast as an audit of evaluation design and calibration, keeping the feature matrix and label definition fixed while explicitly varying the split rule.
+
+Three controls clarify what the high-dimensional matrix can and cannot establish. A missingness-only feature set asks whether detection patterns alone carry the label. A small global-abundance summary asks how well a low-dimensional comparator predicts the same labels. Patient-grouped splitting asks whether repeated patient samples explain the difference between sample-level and cohort-level evaluation. These controls are descriptive safeguards: they expose alternative explanations for apparent transfer, but they do not turn a confounded cohort design into a deconfounded biological experiment.
+
+Calibration is a separate question from ranking. A classifier can order tumour and non-malignant samples well and still assign probabilities that are too extreme on the cohorts where that ranking is weakest. Dropping low-confidence calls can then raise retained accuracy mainly by discarding difficult cohorts. Discrimination, probability error, coverage and the identity of the retained samples therefore have to be read together, on the same split. None of those readouts uncouples cancer type from acquisition batch.
+
+\input{sections/methods-current.tex}
+
+\input{sections/results-current.tex}
+
+\input{sections/discussion-current.tex}
+
+\section*{Author Information}
+
+\noindent\textit{Corresponding Author.}
+Zeyu Fu --- State Key Laboratory of Trauma and Chemical Poisoning, Institute of Combined Injury, Chongqing
+Engineering Research Center for Nanomedicine, College of Preventive Medicine, Army Medical University, Chongqing,
+China; ORCID 0009-0001-8329-0108; email \href{mailto:fuzeyu99@126.com}{fuzeyu99@126.com}.
+
+\noindent\textit{Notes.}
+The author declares no competing financial interest. Funding: N/A --- no external funding to declare.
+Acknowledgments: N/A.
+
+\bibliography{ref}
+
+\end{document}

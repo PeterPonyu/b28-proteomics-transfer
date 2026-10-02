@@ -1,0 +1,545 @@
+{
+  "status": "candidate analysis, not a manuscript replacement",
+  "feature_primary": "shared stable ENSP accession, stripped of version; common gene annotation required",
+  "sensitivity": "old shared gene symbols with first stable accession consistent across cohorts",
+  "tissue": ".N adjacent normal and HNSCC .C cored normal are y=0; unsuffixed tumor y=1",
+  "values": "CPTAC UMICH reference-intensity-subtracted abundance; not raw total signal",
+  "cohort_order": [
+    "Ccrcc",
+    "Luad",
+    "Ucec",
+    "Hnscc",
+    "Lscc",
+    "Pdac"
+  ],
+  "n_samples": 1191,
+  "n_patients": 719,
+  "tumor": 689,
+  "normal": 502,
+  "n_primary_features": 8906,
+  "n_old_shared_gene_symbols": 9675,
+  "n_consistent_first_gene_sensitivity": 8441,
+  "fold_policy": "StratifiedKFold random_state=28; true-patient GroupKFold 5; cohort LOGO",
+  "model": {
+    "n_estimators": 150,
+    "max_depth": 4,
+    "learning_rate": 0.1,
+    "subsample": 0.8,
+    "colsample_bytree": 0.3,
+    "eval_metric": "logloss",
+    "tree_method": "hist",
+    "n_jobs": 4,
+    "verbosity": 0
+  },
+  "software": {
+    "cptac": "1.5.14",
+    "xgboost": "3.3.0",
+    "numpy": "2.5.0",
+    "pandas": "3.0.3",
+    "scikit-learn": "1.9.0"
+  },
+  "input_sha256": {
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-ccrcc/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "fd111b453c205ce2f006d4d0ea9403b5e14e492df88e6611d1694c1e583fb6f4",
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-luad/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "c14afab469226dc7fb709109cbcc0228a9189b9cd6660519573714cf0b3f3bba",
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-ucec/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "c050e457a521bbbf36b28a0f556b4a530403eea98317673b78e94f676cee91cf",
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-hnscc/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "b2f2396ae04c569282c1792625a433b517854dff42445c3655257291455dc851",
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-lscc/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "24370f80b91ece04a5a4d8b6099fcf1155a0f24ef76f2614890aa2a15b8b99b0",
+    "/home/zeyufu/meta_analysis/b28/.venv-cptac/lib/python3.13/site-packages/cptac/data/umich-pdac/Report_abundance_groupby=protein_protNorm=MD_gu=2.tsv.gz": "336d148faa5ca48054acdb6c03c723b6da9873eaeb6b641b028390ecaaad29a5"
+  },
+  "results": {
+    "accession": {
+      "leave_one_cohort_out": {
+        "by_cohort": {
+          "Ccrcc": {
+            "n": 194,
+            "n_tumor": 110,
+            "n_normal": 84,
+            "auroc": 0.8484848484848485,
+            "ece_10": 0.2521958526070278,
+            "brier": 0.22453922823191977,
+            "log_loss": 0.8162476359421095,
+            "accuracy": 0.6958762886597938
+          },
+          "Luad": {
+            "n": 213,
+            "n_tumor": 111,
+            "n_normal": 102,
+            "auroc": 0.9998233527645293,
+            "ece_10": 0.02032156072777235,
+            "brier": 0.006372412062696299,
+            "log_loss": 0.02534470215230341,
+            "accuracy": 0.9859154929577465
+          },
+          "Ucec": {
+            "n": 152,
+            "n_tumor": 103,
+            "n_normal": 49,
+            "auroc": 0.9183673469387755,
+            "ece_10": 0.15007447740553242,
+            "brier": 0.13762827674765124,
+            "log_loss": 0.5270142156676859,
+            "accuracy": 0.8421052631578947
+          },
+          "Hnscc": {
+            "n": 182,
+            "n_tumor": 110,
+            "n_normal": 72,
+            "auroc": 0.9809343434343435,
+            "ece_10": 0.03680880335965552,
+            "brier": 0.04381883106887914,
+            "log_loss": 0.1656151085393093,
+            "accuracy": 0.945054945054945
+          },
+          "Lscc": {
+            "n": 212,
+            "n_tumor": 110,
+            "n_normal": 102,
+            "auroc": 0.997415329768271,
+            "ece_10": 0.005712118963375956,
+            "brier": 0.004822822239188052,
+            "log_loss": 0.0338138206288322,
+            "accuracy": 0.9952830188679245
+          },
+          "Pdac": {
+            "n": 238,
+            "n_tumor": 145,
+            "n_normal": 93,
+            "auroc": 0.8610307749351132,
+            "ece_10": 0.2505598434505343,
+            "brier": 0.2533371272649307,
+            "log_loss": 0.7602390365874236,
+            "accuracy": 0.6554621848739496
+          }
+        },
+        "macro_equal_cohort": {
+          "auroc": 0.9343426660543135,
+          "ece_10": 0.11927877608564974,
+          "brier": 0.11175311626921086,
+          "log_loss": 0.388045753252944,
+          "accuracy": 0.8532828655953758
+        },
+        "pooled": {
+          "n": 1191,
+          "n_tumor": 689,
+          "n_normal": 502,
+          "auroc": 0.9555305627995999,
+          "ece_10": 0.11000776287418691,
+          "brier": 0.11345855077270119,
+          "log_loss": 0.38799663656420796,
+          "accuracy": 0.8497061293031066
+        }
+      },
+      "patient_grouped": {
+        "by_cohort": {
+          "Ccrcc": {
+            "n": 194,
+            "n_tumor": 110,
+            "n_normal": 84,
+            "auroc": 1.0,
+            "ece_10": 0.017639623960292866,
+            "brier": 0.007567031601833248,
+            "log_loss": 0.024831560190093523,
+            "accuracy": 0.9845360824742269
+          },
+          "Luad": {
+            "n": 213,
+            "n_tumor": 111,
+            "n_normal": 102,
+            "auroc": 1.0,
+            "ece_10": 0.0047701800862674565,
+            "brier": 0.0003546189860900323,
+            "log_loss": 0.00496292549364862,
+            "accuracy": 1.0
+          },
+          "Ucec": {
+            "n": 152,
+            "n_tumor": 103,
+            "n_normal": 49,
+            "auroc": 0.9926689122250841,
+            "ece_10": 0.03046635112964159,
+            "brier": 0.027852463921561727,
+            "log_loss": 0.09707011176521875,
+            "accuracy": 0.9605263157894737
+          },
+          "Hnscc": {
+            "n": 182,
+            "n_tumor": 110,
+            "n_normal": 72,
+            "auroc": 0.9849747474747476,
+            "ece_10": 0.019882712399351674,
+            "brier": 0.023170477533907077,
+            "log_loss": 0.12040823177382942,
+            "accuracy": 0.9725274725274725
+          },
+          "Lscc": {
+            "n": 212,
+            "n_tumor": 110,
+            "n_normal": 102,
+            "auroc": 0.9943850267379679,
+            "ece_10": 0.006041866666975073,
+            "brier": 0.005100171234643073,
+            "log_loss": 0.038612053699193384,
+            "accuracy": 0.9952830188679245
+          },
+          "Pdac": {
+            "n": 238,
+            "n_tumor": 145,
+            "n_normal": 93,
+            "auroc": 0.9773822766036336,
+            "ece_10": 0.05245040684934518,
+            "brier": 0.06432610318742818,
+            "log_loss": 0.21919619337247834,
+            "accuracy": 0.9117647058823529
+          }
+        },
+        "macro_equal_cohort": {
+          "auroc": 0.9915684938402389,
+          "ece_10": 0.021875190181978976,
+          "brier": 0.021395144410910557,
+          "log_loss": 0.08418017938241035,
+          "accuracy": 0.9707729325902418
+        },
+        "pooled": {
+          "n": 1191,
+          "n_tumor": 689,
+          "n_normal": 502,
+          "auroc": 0.9944084330313001,
+          "ece_10": 0.013513889802000807,
+          "brier": 0.022153642537693988,
+          "log_loss": 0.08639616321163253,
+          "accuracy": 0.9697732997481109
+        }
+      },
+      "sample_random": {
+        "by_cohort": {
+          "Ccrcc": {
+            "n": 194,
+            "n_tumor": 110,
+            "n_normal": 84,
+            "auroc": 0.9998917748917749,
+            "ece_10": 0.022472930129916885,
+            "brier": 0.012581088157153437,
+            "log_loss": 0.03550292296291515,
+            "accuracy": 0.9742268041237113
+          },
+          "Luad": {
+            "n": 213,
+            "n_tumor": 111,
+            "n_normal": 102,
+            "auroc": 1.0,
+            "ece_10": 0.006629347315461482,
+            "brier": 0.001021397368462305,
+            "log_loss": 0.007251482770822673,
+            "accuracy": 1.0
+          },
+          "Ucec": {
+            "n": 152,
+            "n_tumor": 103,
+            "n_normal": 49,
+            "auroc": 0.9875173370319001,
+            "ece_10": 0.02653766450116802,
+            "brier": 0.029245440460180447,
+            "log_loss": 0.11593166611231172,
+            "accuracy": 0.9671052631578947
+          },
+          "Hnscc": {
+            "n": 182,
+            "n_tumor": 110,
+            "n_normal": 72,
+            "auroc": 0.986489898989899,
+            "ece_10": 0.027392172212885146,
+            "brier": 0.0298750261489095,
+            "log_loss": 0.1298918455358144,
+            "accuracy": 0.9560439560439561
+          },
+          "Lscc": {
+            "n": 212,
+            "n_tumor": 110,
+            "n_normal": 102,
+            "auroc": 0.9973262032085561,
+            "ece_10": 0.0036665671673891446,
+            "brier": 0.004789778679367307,
+            "log_loss": 0.03407979590837002,
+            "accuracy": 0.9952830188679245
+          },
+          "Pdac": {
+            "n": 238,
+            "n_tumor": 145,
+            "n_normal": 93,
+            "auroc": 0.9739710789766408,
+            "ece_10": 0.07481161598495237,
+            "brier": 0.06756364418476327,
+            "log_loss": 0.23663815122185045,
+            "accuracy": 0.9117647058823529
+          }
+        },
+        "macro_equal_cohort": {
+          "auroc": 0.9908660488497952,
+          "ece_10": 0.026918382885295508,
+          "brier": 0.024179395833139373,
+          "log_loss": 0.09321597741868075,
+          "accuracy": 0.96740395801264
+        },
+        "pooled": {
+          "n": 1191,
+          "n_tumor": 689,
+          "n_normal": 502,
+          "auroc": 0.994156899253494,
+          "ece_10": 0.019890813307747633,
+          "brier": 0.024883653104129908,
+          "log_loss": 0.09507880667082723,
+          "accuracy": 0.966414777497901
+        }
+      }
+    },
+    "consistent_gene_first_sensitivity": {
+      "leave_one_cohort_out": {
+        "by_cohort": {
+          "Ccrcc": {
+            "n": 194,
+            "n_tumor": 110,
+            "n_normal": 84,
+            "auroc": 0.8165584415584415,
+            "ece_10": 0.27565318522686816,
+            "brier": 0.25484083507803634,
+            "log_loss": 0.9372057177354809,
+            "accuracy": 0.6649484536082474
+          },
+          "Luad": {
+            "n": 213,
+            "n_tumor": 111,
+            "n_normal": 102,
+            "auroc": 0.9996467055290584,
+            "ece_10": 0.016701249327175004,
+            "brier": 0.006875432956762823,
+            "log_loss": 0.026711921172236072,
+            "accuracy": 0.9906103286384976
+          },
+          "Ucec": {
+            "n": 152,
+            "n_tumor": 103,
+            "n_normal": 49,
+            "auroc": 0.937982960174361,
+            "ece_10": 0.15264870910782757,
+            "brier": 0.13623348287491868,
+            "log_loss": 0.5168105888511783,
+            "accuracy": 0.8486842105263158
+          },
+          "Hnscc": {
+            "n": 182,
+            "n_tumor": 110,
+            "n_normal": 72,
+            "auroc": 0.981439393939394,
+            "ece_10": 0.024154752043874156,
+            "brier": 0.033948617705160514,
+            "log_loss": 0.14846517241307577,
+            "accuracy": 0.967032967032967
+          },
+          "Lscc": {
+            "n": 212,
+            "n_tumor": 110,
+            "n_normal": 102,
+            "auroc": 0.9972370766488414,
+            "ece_10": 0.005143124593849035,
+            "brier": 0.004804386880631626,
+            "log_loss": 0.03431533503808562,
+            "accuracy": 0.9952830188679245
+          },
+          "Pdac": {
+            "n": 238,
+            "n_tumor": 145,
+            "n_normal": 93,
+            "auroc": 0.8647385984427142,
+            "ece_10": 0.23840419745401423,
+            "brier": 0.22671004250148044,
+            "log_loss": 0.6593530869855606,
+            "accuracy": 0.6722689075630253
+          }
+        },
+        "macro_equal_cohort": {
+          "auroc": 0.9329338627154683,
+          "ece_10": 0.11878420295893467,
+          "brier": 0.11056879966616506,
+          "log_loss": 0.38714363703260285,
+          "accuracy": 0.8564713143728296
+        },
+        "pooled": {
+          "n": 1191,
+          "n_tumor": 689,
+          "n_normal": 502,
+          "auroc": 0.9557141535454698,
+          "ece_10": 0.1092804933238464,
+          "brier": 0.1114737591757369,
+          "log_loss": 0.38394987830861965,
+          "accuracy": 0.8530646515533166
+        }
+      }
+    },
+    "global_summaries": {
+      "leave_one_cohort_out": {
+        "by_cohort": {
+          "Ccrcc": {
+            "n": 194,
+            "n_tumor": 110,
+            "n_normal": 84,
+            "auroc": 0.9237012987012987,
+            "ece_10": 0.05067534176344724,
+            "brier": 0.11261337062022711,
+            "log_loss": 0.3556138982424877,
+            "accuracy": 0.8350515463917526
+          },
+          "Luad": {
+            "n": 213,
+            "n_tumor": 111,
+            "n_normal": 102,
+            "auroc": 0.9618441971383147,
+            "ece_10": 0.05090956636070504,
+            "brier": 0.06847956749297424,
+            "log_loss": 0.24399578445711007,
+            "accuracy": 0.9154929577464789
+          },
+          "Ucec": {
+            "n": 152,
+            "n_tumor": 103,
+            "n_normal": 49,
+            "auroc": 0.6409748365365564,
+            "ece_10": 0.14334991634333208,
+            "brier": 0.25791157819497773,
+            "log_loss": 0.7878564041611893,
+            "accuracy": 0.618421052631579
+          },
+          "Hnscc": {
+            "n": 182,
+            "n_tumor": 110,
+            "n_normal": 72,
+            "auroc": 0.782449494949495,
+            "ece_10": 0.09085504803806546,
+            "brier": 0.18514820815903937,
+            "log_loss": 0.5636075530649323,
+            "accuracy": 0.7417582417582418
+          },
+          "Lscc": {
+            "n": 212,
+            "n_tumor": 110,
+            "n_normal": 102,
+            "auroc": 0.9935828877005347,
+            "ece_10": 0.09896378496767214,
+            "brier": 0.04572444411670697,
+            "log_loss": 0.17826618213876186,
+            "accuracy": 0.9622641509433962
+          },
+          "Pdac": {
+            "n": 238,
+            "n_tumor": 145,
+            "n_normal": 93,
+            "auroc": 0.6004449388209122,
+            "ece_10": 0.22007740037946202,
+            "brier": 0.28689850205768724,
+            "log_loss": 0.8706788856643893,
+            "accuracy": 0.5966386554621849
+          }
+        },
+        "macro_equal_cohort": {
+          "auroc": 0.8171662756411853,
+          "ece_10": 0.10913850964211398,
+          "brier": 0.1594626117736021,
+          "log_loss": 0.5000031179548118,
+          "accuracy": 0.7782711008222721
+        },
+        "pooled": {
+          "n": 1191,
+          "n_tumor": 689,
+          "n_normal": 502,
+          "auroc": 0.8492242929587889,
+          "ece_10": 0.060322773134950505,
+          "brier": 0.15726960637227608,
+          "log_loss": 0.49395881766605176,
+          "accuracy": 0.7825356842989085
+        }
+      }
+    },
+    "missingness": {
+      "leave_one_cohort_out": {
+        "by_cohort": {
+          "Ccrcc": {
+            "n": 194,
+            "n_tumor": 110,
+            "n_normal": 84,
+            "auroc": 0.5720779220779221,
+            "ece_10": 0.2400274812867961,
+            "brier": 0.29851658320508234,
+            "log_loss": 0.8117254034047992,
+            "accuracy": 0.5309278350515464
+          },
+          "Luad": {
+            "n": 213,
+            "n_tumor": 111,
+            "n_normal": 102,
+            "auroc": 0.5242889948772301,
+            "ece_10": 0.05251874568316858,
+            "brier": 0.2529033084161542,
+            "log_loss": 0.6993793125172832,
+            "accuracy": 0.5117370892018779
+          },
+          "Ucec": {
+            "n": 152,
+            "n_tumor": 103,
+            "n_normal": 49,
+            "auroc": 0.5789577967109174,
+            "ece_10": 0.17490258165880251,
+            "brier": 0.24581424118508338,
+            "log_loss": 0.6852711571994279,
+            "accuracy": 0.631578947368421
+          },
+          "Hnscc": {
+            "n": 182,
+            "n_tumor": 110,
+            "n_normal": 72,
+            "auroc": 0.5585227272727271,
+            "ece_10": 0.17377217801717612,
+            "brier": 0.26944018865563135,
+            "log_loss": 0.7342111184978746,
+            "accuracy": 0.4725274725274725
+          },
+          "Lscc": {
+            "n": 212,
+            "n_tumor": 110,
+            "n_normal": 102,
+            "auroc": 0.5430035650623886,
+            "ece_10": 0.15165604833724367,
+            "brier": 0.2737839355993009,
+            "log_loss": 0.7477039524927491,
+            "accuracy": 0.5235849056603774
+          },
+          "Pdac": {
+            "n": 238,
+            "n_tumor": 145,
+            "n_normal": 93,
+            "auroc": 0.49002595476455324,
+            "ece_10": 0.16142498501459093,
+            "brier": 0.276166960289637,
+            "log_loss": 0.7491417145411419,
+            "accuracy": 0.4831932773109244
+          }
+        },
+        "macro_equal_cohort": {
+          "auroc": 0.5444794934609564,
+          "ece_10": 0.1590503366662963,
+          "brier": 0.2694375362251482,
+          "log_loss": 0.7379054431088793,
+          "accuracy": 0.5255915878534366
+        },
+        "pooled": {
+          "n": 1191,
+          "n_tumor": 689,
+          "n_normal": 502,
+          "auroc": 0.5116283776360451,
+          "ece_10": 0.14745041278857926,
+          "brier": 0.27032110136513,
+          "log_loss": 0.7397473780662411,
+          "accuracy": 0.5205709487825357
+        }
+      }
+    }
+  }
+}

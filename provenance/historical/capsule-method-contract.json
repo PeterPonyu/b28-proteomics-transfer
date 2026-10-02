@@ -1,0 +1,355 @@
+{
+  "paper": "B28",
+  "schema_version": "corrected-accession-integration-1",
+  "status": "ORIGINAL_MANUSCRIPT_INTEGRATED; SCIENTIFIC_HOLD",
+  "scientific_ready_attested": false,
+  "scope": [
+    "1191 samples; 689 tumor; 502 source-normal; 719 true patients; 8906 stable ENSP accessions",
+    "Corrected GroupKFold replaces the invalid historical 723-key partition",
+    "L2 max_iter=500 with six converged fits; macro and pooled estimands separated",
+    "301 independently recomputed result cells; fixed-prediction sensitivity is not a future-study CI",
+    "OV source/annotation checked but historical summary not prediction-replayed; dependent old side studies not promoted"
+  ],
+  "locked_files": [
+    {
+      "path": "REPRODUCIBILITY-CURRENT.md",
+      "sha256": "a7ec4f586d7afc1eadc143e4cbe20364dcfdbfaf2e0371c08480855c516dadf2"
+    },
+    {
+      "path": "analysis/integration_20260923/backups/integration-QA-before-finalization.json",
+      "sha256": "2f57c73d4bfa6e1b3f8ca68b5d7f2a595800cbba527851997ac3df8298912052"
+    },
+    {
+      "path": "analysis/integration_20260923/numerical-QA.json",
+      "sha256": "a2dcef52fd44763d6b44319d78f4b4613279cbe82710fa5dff7cffc43ce3b896"
+    },
+    {
+      "path": "analysis/integration_20260923/ov-source-check.json",
+      "sha256": "976b750ee9b354ff50c57b6b6e0e0fbb276ebc9e729a959d604e31ef008ede5c"
+    },
+    {
+      "path": "analysis/revision_20260922/candidate-v1/candidate-QA.json",
+      "sha256": "2139905c0b4ce82d2e4ae5b0d5dd93e7bd15e530de5ff12f39f6051e7f80aec7"
+    },
+    {
+      "path": "analysis/revision_20260922/candidate-v1/candidate-recalibration-summary.json",
+      "sha256": "1e57d51bb45f7ce654abcbd0f156874a41c70a5b545bfaff2e515963c9d7df60"
+    },
+    {
+      "path": "analysis/revision_20260922/candidate-v1/candidate-recalibration.csv",
+      "sha256": "84860bc408d23390ebe9d95680b6ea2a9114a7efad6b99796871e8573dde4413"
+    },
+    {
+      "path": "analysis/revision_20260922/candidate-v1/candidate-results.json",
+      "sha256": "5fe3a5e0364ecb4256970f5aaf919607dea3dd40b2093a53d8657bab0d05b81c"
+    },
+    {
+      "path": "analysis/revision_20260922/candidate-v1/candidate-riskcoverage.csv",
+      "sha256": "ba7d7f4a86b3efb9425c69dbeed2d8bd56d726957065085ae9775d2c3c198a0a"
+    },
+    {
+      "path": "analysis/revision_20260922/candidate-v1/fixed-prediction-patient-resampling.json",
+      "sha256": "34c60f03439cfdd54eb88655855dba9f7dba0aca08562881628861ffa8213e48"
+    },
+    {
+      "path": "analysis/revision_20260922/candidate-v1/gene-accession-audit.csv",
+      "sha256": "ac847d88bc15b96a414cfa81f48d0131db7791c0d2f7db144fe54f2ac34417ee"
+    },
+    {
+      "path": "analysis/revision_20260922/candidate-v1/predictions.csv",
+      "sha256": "01cc17f4e9c94b0507010273f2adcc264b9e684eda9cf277f74ea5a6008a0ce8"
+    },
+    {
+      "path": "analysis/revision_20260922/candidate-v1/primary-accession-map.csv",
+      "sha256": "90804e029092ced5a27ba39803a22e8ba0781e52c01f4e6ac0b6e8db537d6a0a"
+    },
+    {
+      "path": "analysis/revision_20260922/candidate-v1/sample-identity-and-folds.csv",
+      "sha256": "ba2bb320c34ce8eaa58ba74f538899be1a6aa400e428cd43d012ef632b901103"
+    },
+    {
+      "path": "analysis/revision_20260922/candidate-v2-side-studies/QA.json",
+      "sha256": "c4de7d8fe89f1edcecc4bfa895d6e0902520f9c5535d22e203014c2e5a6f23a4"
+    },
+    {
+      "path": "analysis/revision_20260922/candidate-v2-side-studies/predictions.csv",
+      "sha256": "f1c8872f5e1970d2d5518d5d327468b2c32fd6e16086baea73f302fb5402690f"
+    },
+    {
+      "path": "analysis/revision_20260922/candidate-v2-side-studies/results.json",
+      "sha256": "435f945941cc7b032860c8cade9099fe72e9bb57e388575cd242e921d4721504"
+    },
+    {
+      "path": "analysis/revision_20260922/figures_candidate.py",
+      "sha256": "9a58565f87e89e8432b7adf62aeabee6d6ee045b40cf0976627e6063872e40a2"
+    },
+    {
+      "path": "analysis/revision_20260922/fixed_prediction_sensitivity.py",
+      "sha256": "5c0e9eb1bc6b13226656f0d7d8c5713a4530113de9fcee161d1385c60881be58"
+    },
+    {
+      "path": "analysis/revision_20260922/postprocess.py",
+      "sha256": "2ceb34683c4b41893c9a871df992e57be639fec8ea0ddf487444f16c557f4cc9"
+    },
+    {
+      "path": "analysis/revision_20260922/reanalyse.py",
+      "sha256": "dfcfd4c8364383e723591a90126982ed7dd6eb2761e0c50c53ac64234448384a"
+    },
+    {
+      "path": "analysis/revision_20260922/side_studies.py",
+      "sha256": "bb6b78e951c4a7a271417425d476e18f8ef6d87259cc60c8925a72926d3a7a6d"
+    },
+    {
+      "path": "analysis/revision_20260922/test_reanalyse.py",
+      "sha256": "b01efd62b0d12e09ce35d97d8474a953e9e2b58956ddb008ec9f6a85a27b90fc"
+    },
+    {
+      "path": "analysis/revision_20260922/test_side_studies.py",
+      "sha256": "f278a43112d67d868ef1776c7b0634f18644f95e02aa86886ce8608c7aec1db2"
+    },
+    {
+      "path": "analysis/revision_20260922/verify_candidate.py",
+      "sha256": "6bb63d41868ead921f49105b6f5eb759b7c85cf51bfd1787ea249a1eef4fb4a4"
+    },
+    {
+      "path": "analysis/revision_20260922/verify_candidate_pdf.py",
+      "sha256": "c44873a0920ee7b3146016dd1879cdabee3a6f3c7947ebea310d53789aea2491"
+    },
+    {
+      "path": "analysis/revision_20260922/verify_figures_candidate.py",
+      "sha256": "e9bd6b838759415b4cda8c0ebcd86b25a3ec66d5d94619949296e0537be1bece"
+    },
+    {
+      "path": "analysis/revision_20260922/verify_postprocess.py",
+      "sha256": "452ae5d1eaab2cd2838d93401cf3a7aa8a373e3b3eb762b996d00a1c8ecd7f14"
+    },
+    {
+      "path": "analysis/revision_20260922/verify_side_studies.py",
+      "sha256": "2739d5d21987a2b2df81fdfea94a403b2abb04838d21baaf1a06bbf042b14257"
+    },
+    {
+      "path": "manuscript/FIGURE-PROVENANCE.md",
+      "sha256": "6d65c8eb972781a135e74e96e38540f242a62b1b31393a966898377a4666ba1e"
+    },
+    {
+      "path": "manuscript/SI.tex",
+      "sha256": "4b5c19fcebde1aae8384cc15657b2ae5a2ee091e0cd8fe7ac555f35e131c9045"
+    },
+    {
+      "path": "manuscript/manuscript.tex",
+      "sha256": "8a1038d1bf5b765aaf5082ce7b62b3dc5988cd0f71fdc5c112a41085f201a3a8"
+    },
+    {
+      "path": "manuscript/ref.bib",
+      "sha256": "6ac4095921f1fc3ee46fee0386a433d11c481dad58996c8734656f0f2c9362b7"
+    },
+    {
+      "path": "manuscript/scripts/R/compose_b28.R",
+      "sha256": "6f9f3441c8c645d736eb5009c16946195ce61afb87daaa853f4273e240db1598"
+    },
+    {
+      "path": "manuscript/scripts/R/make_b28_figures.R",
+      "sha256": "ba56854b2c5793e64b2885cfd752af39f13f9ff185666b6a86205b190351c48a"
+    },
+    {
+      "path": "manuscript/scripts/R/theme_b28.R",
+      "sha256": "f3ff78d0e92070c072db62fad2bb2d3a6c9c8ccf9553cd4bd872e5370e10a244"
+    },
+    {
+      "path": "manuscript/scripts/build_pdf.sh",
+      "sha256": "8c91b5e2236719dd8dd49ebfafac338d05ad1e6ab843cbe397cbb762d12e6e5d"
+    },
+    {
+      "path": "manuscript/scripts/check_layout.py",
+      "sha256": "ecfacfb81c8aa4bdfbbd3edf5aa538ab1d9df67d271539c0a89ddb1f6b4e8267"
+    },
+    {
+      "path": "manuscript/scripts/compile_current.py",
+      "sha256": "6c926687c6a92f8128f1cac3df32a94df3b39fa87855c05ed9a33dd43070c4e4"
+    },
+    {
+      "path": "manuscript/scripts/export_b28_plotdata.py",
+      "sha256": "3c1b2085ee324668318dae26a0094c116311711996882adb5abbddbf1051aac8"
+    },
+    {
+      "path": "manuscript/scripts/export_revision.py",
+      "sha256": "b01b86d0ee210e07799796394343c82cfc248cda98585f84de60bfe5aac12424"
+    },
+    {
+      "path": "manuscript/scripts/make_current_graphical_abstract.py",
+      "sha256": "68d7fe5e3dc2bae5c437806f346c484be23bfdf15154b41bfbcc3fcb977e4aa3"
+    },
+    {
+      "path": "manuscript/scripts/make_study_design.py",
+      "sha256": "3375e08238a87b256b4ddff3f30f13b98b1109df8eac266237309d6e1f9809c8"
+    },
+    {
+      "path": "manuscript/scripts/rebuild_current.sh",
+      "sha256": "7e549a16154748ae079e2b624747063d846a3d53ade41f28aa685bc0e5c47d4f"
+    },
+    {
+      "path": "manuscript/scripts/release_integration.py",
+      "sha256": "9c3b9b9646b617ab96080eb534abdfed1a083a27e2e75d229369d6f0b4641b9d"
+    },
+    {
+      "path": "manuscript/scripts/render_review.py",
+      "sha256": "717c75a9672e3fee05b4150953a6b6026235714e6c79063fd8f1b44c4ce2793b"
+    },
+    {
+      "path": "manuscript/scripts/tests/test_current_integration.py",
+      "sha256": "bdfd0c5b0e56c9f484339c637a33dc721668c84615746323f42b4970c26c755a"
+    },
+    {
+      "path": "manuscript/scripts/tests/test_face_identity.py",
+      "sha256": "78d774fd104dd304a8ba7e700cc49a1dc9abbdaa731b1741e0b4db8e7ece8776"
+    },
+    {
+      "path": "manuscript/scripts/verify_integration.py",
+      "sha256": "c2162a9dc673506ae89450f128875ecef9ef1f970f45a6ad5e335dbdd7887920"
+    },
+    {
+      "path": "manuscript/scripts/write_lock_methods_tex.py",
+      "sha256": "e53bb06cfdcdde15f542875b71bf1ef2b996bb65b780dbf629d90ad8bd0ea813"
+    },
+    {
+      "path": "manuscript/sections/discussion-current.tex",
+      "sha256": "85b53209b573953720268ca4335a4aeede7676392225da6dcd76cd8586075dcf"
+    },
+    {
+      "path": "manuscript/sections/methods-current.tex",
+      "sha256": "149d3737911fbc7baf236e0eaf1246a9ce81813ddb63a7d979dc3e445dcac253"
+    },
+    {
+      "path": "manuscript/sections/results-current.tex",
+      "sha256": "dffc0f7c6b90a7894b0116b27e9028c7f624fdbaa0ebe58abd40741bd584d291"
+    },
+    {
+      "path": "reproducibility/METHOD-AUDIT.md",
+      "sha256": "0fdc36de774fdb206d7d9561123650019d82d8db3d1a6b4f1525d1670a3d6221"
+    },
+    {
+      "path": "reproducibility/README.md",
+      "sha256": "e51a862d3a9bcffa5c6677007157e0285b8ae3d2a2cb40162baa6c8c319bff4f"
+    },
+    {
+      "path": "reproducibility/analysis/fold_identity.py",
+      "sha256": "8c062378c83f583b2db145fe94d88f073857dcda78cfd663cbdc5eb4f10690bb"
+    },
+    {
+      "path": "reproducibility/tests/test_b28_method_integrity.py",
+      "sha256": "b53fec46325585d8f595059369dc13b8e935e8e91ae92a5f1cb5dba1541dcd1f"
+    },
+    {
+      "path": "reproducibility/verify_method_contract.py",
+      "sha256": "da7bcecf3b53da0959c6b7445a8f3f83e9c72989f6fe2d018939587b22352e84"
+    },
+    {
+      "path": "results-snapshot/B28_side_study/b28-ov-plex-logo.json",
+      "sha256": "4557825ee96bdaf3417b0a2af1d48d11f280efd10595f3b06d65d6871d889fd2"
+    },
+    {
+      "path": "manuscript/figures/plotdata/b28_all_cohort_metrics.csv",
+      "sha256": "e8da925a59dc0785c34da375b1d41ff0fb6f33a213f14a85011729abe222525c"
+    },
+    {
+      "path": "manuscript/figures/plotdata/b28_ece_compare.csv",
+      "sha256": "0b1ca3c5b366306810871a2d09267c8b111a3e7420484cb41c69ca4098803ecb"
+    },
+    {
+      "path": "manuscript/figures/plotdata/b28_l2_vs_xgb.csv",
+      "sha256": "11b3a411fa8f154d966dfcba4d71645b92b55003b5eaa0f2728eea70c87a89a0"
+    },
+    {
+      "path": "manuscript/figures/plotdata/b28_ladder.csv",
+      "sha256": "72503e4db3c8c1e32d4a938645fc031c0a92f781326d6e98155760156cc16af5"
+    },
+    {
+      "path": "manuscript/figures/plotdata/b28_leaky_compare.csv",
+      "sha256": "e848ff25453e083cf2c27ec3b6e1c51f04bc50d5de287718f66e1efdf21be0bf"
+    },
+    {
+      "path": "manuscript/figures/plotdata/b28_pair_counts.csv",
+      "sha256": "ca4b8e12a8b9c53de81c907ecebc420eda1254e653b4dd5790fe140f77c7c080"
+    },
+    {
+      "path": "manuscript/figures/plotdata/b28_protocol_summary.csv",
+      "sha256": "72f590dc8f27ee4e5c921ebcafe6cf7b7f11362e6bfa709cc4b5f59b63f9a100"
+    },
+    {
+      "path": "manuscript/figures/plotdata/b28_recal_scores.csv",
+      "sha256": "c38073605aa2bd5904da03a0bc808eed7328f7703c473a5b465de1c866677ce8"
+    },
+    {
+      "path": "manuscript/figures/plotdata/b28_recal_summary.csv",
+      "sha256": "3551a0f851457b7c338dfeaeb1f9822a89cd609e63386b5c5a78daa7359962b3"
+    },
+    {
+      "path": "manuscript/figures/plotdata/b28_reliability.csv",
+      "sha256": "e3c7388220a6567db9313cb90ce4406666a4a5c98c527df073c324d170d61d45"
+    },
+    {
+      "path": "manuscript/figures/plotdata/b28_riskcoverage.csv",
+      "sha256": "eadee8b78b2535c7aaf25c2456c8ef81031f535ea15d62039de49e1bfd5b7d22"
+    },
+    {
+      "path": "manuscript/figures/plotdata/b28_riskcoverage_cohort.csv",
+      "sha256": "3b2c1f29ccd7662866c4aff8ca1258fcb39a6a61d0867999b716a960264c5659"
+    },
+    {
+      "path": "manuscript/figures/plotdata/b28_transfer.csv",
+      "sha256": "af4afc97620cd9f61d9f1ad6bec8f56d36d1a13628ee7d9fa250877bf078ff2d"
+    },
+    {
+      "path": "manuscript/tables/cohort_rows.tex",
+      "sha256": "0048e6e5b624c2bd30e7683a80db9301ef962903bfb12078274eed6a2dfb25a9"
+    },
+    {
+      "path": "manuscript/tables/coverage_rows.tex",
+      "sha256": "9f6b4081576dbe69bb7b1eecf7df04cf1bc8feac92bb8240a4a9c10b1cec1371"
+    },
+    {
+      "path": "manuscript/tables/global_rows.tex",
+      "sha256": "c8b645f8ef4d2a69fb66a773e81fde244d8c6b73c5d2a87be6a9bb564a8eef14"
+    },
+    {
+      "path": "manuscript/tables/l2_convergence_rows.tex",
+      "sha256": "a93afe827738ced6f76eff09cb3eb49b67295987273bdab6cf03b48e6d0464d8"
+    },
+    {
+      "path": "manuscript/tables/l2_rows.tex",
+      "sha256": "50c951f9ee387f0019f09f3a4e38a69abee41e33bfb15a1e5a0283e81e5145fe"
+    },
+    {
+      "path": "manuscript/tables/leaky_rows.tex",
+      "sha256": "77622ce232aacb2b1604d48c5a0c5849f50c65125f37e8a0edbff838bb8d8918"
+    },
+    {
+      "path": "manuscript/tables/mapping_rows.tex",
+      "sha256": "a9d547724c267ea8d43bc74bbac1da8355505473b19a4ffee6b290e3bbc2144e"
+    },
+    {
+      "path": "manuscript/tables/missingness_rows.tex",
+      "sha256": "7a900fea41a78cd45ae56061d3e813bc25cff850da1e479cce734658ebdfc933"
+    },
+    {
+      "path": "manuscript/tables/primary_rows.tex",
+      "sha256": "b5ff9c775b5ce8962b791a623c7e93612c390336678ed72a35ae107ad317d1c6"
+    },
+    {
+      "path": "manuscript/tables/protocol_rows.tex",
+      "sha256": "36612eabaa5de0bd0857a38d686d43da9f3d8fbd5887a1e0178ac78c9ecde594"
+    },
+    {
+      "path": "manuscript/tables/recalibration_rows.tex",
+      "sha256": "264420a5e9b9d9b6bc5534ede97570378c50bd045184a9ae82831b42daf91faa"
+    },
+    {
+      "path": "manuscript/tables/resampling_rows.tex",
+      "sha256": "e3455f65a40d27f558fc61147efd67f214a28b47da1795975eddaafb48e153a8"
+    },
+    {
+      "path": "reproducibility/splits/patient-grouped-corrected-20260922.csv",
+      "sha256": "3cd329b8963721893afd38ccb6447f34bb81d2a8e838f41bdc71ae1c66d08de0"
+    }
+  ]
+}
